@@ -53,41 +53,54 @@ flutter run
 ## Features
 
 * Onboarding
-![Onboarding](assets/images/onboard.jpg =300X)
+
+![Onboarding](assets/images/onboard.jpg=300X)
 
 * Login
-![Login](assets/images/login.jpg =300X)
+
+![Login](assets/images/login.jpg=300X)
 
 * Home Page
-![Home](assets/images/homepage.jpg =300X)
+
+![Home](assets/images/homepage.jpg=300X)
 
 * Send
-![Send](assets/images/send.jpg =300X)
+
+![Send](assets/images/send.jpg=300X)
 
 * Request
-![Request](assets/images/request.jpg =300X)
+
+![Request](assets/images/request.jpg=300X)
 
 * Split Bill
-![Split](assets/images/splitbill.jpg =300X)
+
+![Split](assets/images/splitbill.jpg=300X)
 
 * Group
-![Group](assets/images/group.jpg =300X)
+
+![Group](assets/images/group.jpg=300X)
 
 * History
-![History](assets/images/history.jpg =300X)
+
+![History](assets/images/history.jpg=300X)
 
 * Payment In/Out
-![Payment](assets/images/payment.jpg =300X)
+
+![Payment](assets/images/payment.jpg=300X)
 
 * Statistic
-![Statistic](assets/images/statistic.jpg =300X)
+
+![Statistic](assets/images/statistic.jpg=300X)
 
 * Profile
-![Profile](assets/images/profile.jpg =300X)
+
+![Profile](assets/images/profile.jpg=300X)
 
 * Qr Scan
-![Scan](assets/images/qr-scan.jpg =300X)
+
+![Scan](assets/images/qr-scan.jpg=300X)
 
 * Qr Code
-![Code](assets/images/qr-code.jpg =300X)
+
+![Code](assets/images/qr-code.jpg=300X)
 
