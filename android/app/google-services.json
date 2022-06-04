@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1054254460241",
+    "project_id": "marcha-branch",
+    "storage_bucket": "marcha-branch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054254460241:android:0c2c84eed318e5268cb770",
+        "android_client_info": {
+          "package_name": "com.example.marcha_branch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054254460241-o9lsc0l0e84ee62qp5hvb2ip7pktlavi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.marcha_branch",
+            "certificate_hash": "d71c7b7f4618a2d8b767da192e15e3da4091bd08"
+          }
+        },
+        {
+          "client_id": "1054254460241-oi4vbj3qqia0av3httbgmkdv56580lcc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.marcha_branch",
+            "certificate_hash": "2585f9f543f83cdf584b162f62dca6f753cb3bfc"
+          }
+        },
+        {
+          "client_id": "1054254460241-ki31mddbghq1e3n8ic9itnpdf86eklcd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKyW4hEbNdrdADXREuBgjTFsRptivD9Xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054254460241-ki31mddbghq1e3n8ic9itnpdf86eklcd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
