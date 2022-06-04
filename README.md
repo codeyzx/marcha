@@ -12,14 +12,12 @@ Conventional transactions that use physical cash in the process we often do ever
 
 Therefore, we from the ORBIT team developed an application called Marcha, Marcha is a social payment application that provides various features that you can use to make digital transactions. In addition to digital financial transactions, we also focus on building a fun and interactive environment in our application, the goal is to make it easier for users to make digital transactions with friends and family without feeling awkward because it is related to money.
 
-## Table of Contents (Optional)
+## Table of Contents
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
 
 - [Usage](#usage)
 - [Features](#features)
-- [License](#license)
-- 
 
 ## Usage
 
@@ -28,7 +26,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 Download or clone this repo by using the link below:
 
 ```
-https://github.com/zubairehman/flutter-boilerplate-project.git
+https://github.com/codeyzx/marcha.git
 ```
 
 **Step 2:**
@@ -54,4 +52,29 @@ flutter run
 
 ## Features
 
-//
+* Onboarding
+![Onboarding](assets/images/onboard.jpg)
+* Login
+![Login](assets/images/login.jpg)
+* Home Page
+![Home](assets/images/homepage.jpg)
+* Send
+![Send](assets/images/send.jpg)
+* Request
+![Request](assets/images/request.jpg)
+* Split Bill
+![Split](assets/images/splitbill.jpg)
+* Group
+![Group](assets/images/group.jpg)
+* History
+![History](assets/images/history.jpg)
+* Payment In/Out
+![Payment](assets/images/payment.jpg)
+* Statistic
+![Statistic](assets/images/statistic.jpg)
+* Profile
+![Profile](assets/images/profile.jpg)
+* Qr Scan
+![Scan](assets/images/qr-scan.jpg)
+* Qr Code
+![Code](assets/images/qr-code.jpg)
