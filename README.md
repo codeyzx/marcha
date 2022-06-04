@@ -54,53 +54,53 @@ flutter run
 
 * Onboarding
 
-![Onboarding](assets/images/onboard.jpg#300)
+![Onboarding](assets/images/onboard.jpg#100)
 
 * Login
 
-![Login](assets/images/login.jpg#300)
+![Login](assets/images/login.jpg#100)
 
 * Home Page
 
-![Home](assets/images/homepage.jpg#300)
+![Home](assets/images/homepage.jpg#100)
 
 * Send
 
-![Send](assets/images/send.jpg#300)
+![Send](assets/images/send.jpg#100)
 
 * Request
 
-![Request](assets/images/request.jpg#300)
+![Request](assets/images/request.jpg#100)
 
 * Split Bill
 
-![Split](assets/images/splitbill.jpg#300)
+![Split](assets/images/splitbill.jpg#100)
 
 * Group
 
-![Group](assets/images/group.jpg#300)
+![Group](assets/images/group.jpg#100)
 
 * History
 
-![History](assets/images/history.jpg#300)
+![History](assets/images/history.jpg#100)
 
 * Payment In/Out
 
-![Payment](assets/images/payment.jpg#300)
+![Payment](assets/images/payment.jpg#100)
 
 * Statistic
 
-![Statistic](assets/images/statistic.jpg#300)
+![Statistic](assets/images/statistic.jpg#100)
 
 * Profile
 
-![Profile](assets/images/profile.jpg#300)
+![Profile](assets/images/profile.jpg#100)
 
 * Qr Scan
 
-![Scan](assets/images/qr-scan.jpg#300)
+![Scan](assets/images/qr-scan.jpg#100)
 
 * Qr Code
 
-![Code](assets/images/qr-code.jpg#300)
+![Code](assets/images/qr-code.jpg#100)
 
