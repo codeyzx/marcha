@@ -1,5 +1,5 @@
 # Marcha Social Payment App
-![Logo](assets/images/logo.png)
+![Logo](assets/images/banner.png)
 
 ## Description
 
