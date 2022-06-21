@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:date_format/date_format.dart';
 import 'package:marcha_branch/ui/split_bill/splitBillAdvanced_page.dart';

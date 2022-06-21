@@ -59,7 +59,7 @@ class _SignupPageState extends State<SignupPage> {
       });
     } catch (error) {
       print(error);
-      if (this.mounted) {
+      if (mounted) {
         setState(() {
           _loading = false;
         });
@@ -79,7 +79,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     final loadIndicator = Center(
       child: CircularProgressIndicator(
-        valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
       ),
     );
 
@@ -126,7 +126,7 @@ class _SignupPageState extends State<SignupPage> {
         );
       }
     }, builder: (context, state) {
-      return Container(
+      return SizedBox(
         width: double.infinity,
         height: 55.h,
         child: RaisedButton(
@@ -185,12 +185,13 @@ class _SignupPageState extends State<SignupPage> {
     String? emailValidator(value) {
       var pattern =
           r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-      RegExp regex = new RegExp(pattern);
+      RegExp regex = RegExp(pattern);
       if (value.isEmpty) return 'Masukkan Email Anda!';
-      if (!regex.hasMatch(value))
+      if (!regex.hasMatch(value)) {
         return 'Mohon Masukkan Email yang Valid!';
-      else
+      } else {
         return null;
+      }
     }
 
     return Scaffold(
@@ -216,9 +217,9 @@ class _SignupPageState extends State<SignupPage> {
           body: SafeArea(
             child: GestureDetector(
               onTap: () {
-                FocusScope.of(context).requestFocus(new FocusNode());
+                FocusScope.of(context).requestFocus(FocusNode());
               },
-              child: Container(
+              child: SizedBox(
                 width: 1.sw,
                 height: 1.sh,
                 child: SingleChildScrollView(
@@ -383,10 +384,12 @@ class _SignupPageState extends State<SignupPage> {
                                 ),
                               ),
                               validator: (value) {
-                                if (value!.isEmpty)
+                                if (value!.isEmpty) {
                                   return 'Kata Sandi tidak boleh kosong';
-                                if (value.length < 6)
+                                }
+                                if (value.length < 6) {
                                   return 'Minimal Kata Sandi 6 Karakter';
+                                }
                                 return null;
                               },
                               autovalidateMode:
@@ -450,10 +453,12 @@ class _SignupPageState extends State<SignupPage> {
                                 ),
                               ),
                               validator: (value) {
-                                if (value!.isEmpty)
+                                if (value!.isEmpty) {
                                   return 'Konfirmasi Kata Sandi harus diisi';
-                                if (_confirm.text != _password.text)
+                                }
+                                if (_confirm.text != _password.text) {
                                   return 'Kata Sandi yang dimasukkan tidak sesuai';
+                                }
                                 return null;
                               },
                               autovalidateMode:

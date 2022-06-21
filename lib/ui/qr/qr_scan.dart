@@ -10,7 +10,6 @@ import 'package:marcha_branch/shared/theme.dart';
 import 'package:marcha_branch/ui/qr/qr_page.dart';
 import 'package:marcha_branch/ui/request/request_detail_page.dart';
 import 'package:marcha_branch/ui/send/sendDetail_page.dart';
-import 'package:marcha_branch/ui/send/send_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -292,7 +291,7 @@ class _QrScanState extends State<QrScan> {
                                                                       CrossAxisAlignment
                                                                           .start,
                                                                   children: [
-                                                                    Container(
+                                                                    SizedBox(
                                                                         width: 245
                                                                             .w,
                                                                         child:
@@ -306,7 +305,7 @@ class _QrScanState extends State<QrScan> {
                                                                           maxLines:
                                                                               1,
                                                                         )),
-                                                                    Container(
+                                                                    SizedBox(
                                                                         width: 245
                                                                             .w,
                                                                         child:

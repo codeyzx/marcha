@@ -66,7 +66,7 @@ class _SignupPageState extends State<SignupPage> {
     } catch (error) {
       print('======= MASUK CATCH ');
       print(error);
-      if (this.mounted) {
+      if (mounted) {
         setState(() {
           _loading = false;
         });
@@ -80,14 +80,14 @@ class _SignupPageState extends State<SignupPage> {
 
   bool _passwordVisible = false;
   bool _repeatpasswordVisible = false;
-  bool _acceptTerms = false;
+  final bool _acceptTerms = false;
 
   @override
   Widget build(BuildContext context) {
     String? emailValidator(value) {
       var pattern =
           r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-      RegExp regex = new RegExp(pattern);
+      RegExp regex = RegExp(pattern);
       if (value.isEmpty) return 'Masukkan Email Anda!';
       if (!regex.hasMatch(value)) {
         return 'Mohon Masukkan Email yang Valid!';

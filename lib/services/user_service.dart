@@ -13,7 +13,7 @@ class UserService {
           .set({'email': user.email, 'name': user.name, 'balance': 0});
     } catch (e) {
       print('======= GAGAL MASUK  SET USER ');
-      throw e;
+      rethrow;
     }
   }
 
@@ -29,7 +29,7 @@ class UserService {
         pin: snapshot['pin'],
       );
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

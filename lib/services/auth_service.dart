@@ -115,8 +115,9 @@ class AuthService {
       await _auth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       print(e.message);
-      throw e;
+      rethrow;
     }
+    return null;
   }
 
   Future<void> signOutFromGoogle() async {
@@ -206,8 +207,8 @@ class AuthService {
           await UserService().getUserById(userCredential!.user!.uid);
       // UserModel user = await UserService().getUserById(_currentUser!.id);
 
-      print('CREDENTIAL: \N$userCredential');
-      print('CURRENT USER: \N $_currentUser');
+      print('CREDENTIAL: N$userCredential');
+      print('CURRENT USER: N $_currentUser');
       print('USER: \n ${user.pin}');
 
       return user;
@@ -226,7 +227,7 @@ class AuthService {
           await UserService().getUserById(userCredential.user!.uid);
       return user;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -254,19 +255,19 @@ class AuthService {
       print('======= MASUK RETURN USER ');
       return user;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
   Future<void> updateProfile(String name, String email) async {
-    final User user = await _auth.currentUser!;
+    final User user = _auth.currentUser!;
     final userId = user.uid;
     try {
       await UserService().getUserById(userId);
       CollectionReference docRef = firestore.collection('users');
       await docRef.doc(userId).set({'email': email, 'name': name});
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -274,7 +275,7 @@ class AuthService {
     try {
       await _auth.signOut();
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

@@ -6,8 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:date_format/date_format.dart';
-import 'package:marcha_branch/ui/pin/otp.dart';
-import 'package:marcha_branch/ui/request/request_otp.dart';
 import 'package:marcha_branch/ui/request/request_success_page.dart';
 
 class RequestDetail extends StatefulWidget {
@@ -387,7 +385,7 @@ class _RequestDetailState extends State<RequestDetail> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Container(
+                                                SizedBox(
                                                     width: 245.w,
                                                     child: Text(
                                                       _userTargetName,
@@ -396,7 +394,7 @@ class _RequestDetailState extends State<RequestDetail> {
                                                           TextOverflow.ellipsis,
                                                       maxLines: 1,
                                                     )),
-                                                Container(
+                                                SizedBox(
                                                     width: 245.w,
                                                     child: Text(
                                                       _userTargetEmail,

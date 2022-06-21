@@ -768,7 +768,7 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
                                 for (var i = 0; i < _friendID.length; i++) {
                                   // print(
                                   //     'friend id length: ${_friendID.length}');
-                                  print('index: ${i}');
+                                  print('index: $i');
                                   var prefix = _controllers[i]
                                       .text
                                       .split('Rp')[1]

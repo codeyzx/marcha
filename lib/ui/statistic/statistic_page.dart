@@ -77,7 +77,7 @@ class _StatisticPageState extends State<StatisticPage> {
                       SizedBox(
                         height: 20.h,
                       ),
-                      Container(
+                      SizedBox(
                         width: 1.sw,
                         height: 350.h,
                         child: SfCartesianChart(

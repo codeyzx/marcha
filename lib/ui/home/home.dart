@@ -12,7 +12,6 @@ import 'package:marcha_branch/ui/friends/friends_page.dart';
 import 'package:marcha_branch/ui/groups/group_page.dart';
 import 'package:marcha_branch/ui/history/history_page.dart';
 import 'package:marcha_branch/ui/home/notification_page.dart';
-import 'package:marcha_branch/ui/home/topup_page.dart';
 import 'package:marcha_branch/ui/request/request_page.dart';
 import 'package:marcha_branch/ui/send/send_page.dart';
 import 'package:marcha_branch/ui/split_bill/splitBill_page.dart';

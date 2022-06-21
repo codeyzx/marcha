@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marcha_branch/shared/theme.dart';
-import 'package:marcha_branch/ui/botnavbar.dart';
 import 'package:marcha_branch/ui/send/send_page.dart';
 
 class SendSuccessPage extends StatelessWidget {

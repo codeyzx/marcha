@@ -6,7 +6,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:marcha_branch/ui/create_group/createGroup_page.dart';
-import 'package:marcha_branch/ui/friends/search_page.dart';
 import 'package:marcha_branch/ui/groups/group_chat_page.dart';
 import 'package:marcha_branch/ui/qr/qr_scan.dart';
 
@@ -67,11 +66,12 @@ class _GroupPageState extends State<GroupPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextFormField(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SearchPage(),
-                        )),
+                    // onTap: () => Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => SearchPage(),
+                    //     )),
+                    onTap: () {},
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: HexColor('EBEDEE'),
@@ -111,7 +111,9 @@ class _GroupPageState extends State<GroupPage> {
                               builder: (context) => CreateGroupPage(
                                 isAdd: false,
                                 groupID: '',
-                                members: const [], membersName: const [], membersEmail: const [],
+                                members: const [],
+                                membersName: const [],
+                                membersEmail: const [],
                               ),
                             )),
                         child: Text(
@@ -292,7 +294,9 @@ class _GroupPageState extends State<GroupPage> {
                                                           CreateGroupPage(
                                                             isAdd: false,
                                                             groupID: '',
-                                                            members: const [], membersName: const [], membersEmail: const [],
+                                                            members: const [],
+                                                            membersName: const [],
+                                                            membersEmail: const [],
                                                           )));
                                             },
                                             style: ButtonStyle(

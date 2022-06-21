@@ -11,7 +11,7 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController _email = new TextEditingController();
+  final TextEditingController _email = TextEditingController();
 
   bool _loading = false;
 
@@ -43,12 +43,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     String? emailValidator(value) {
       var pattern =
           r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-      RegExp regex = new RegExp(pattern);
+      RegExp regex = RegExp(pattern);
       if (value.isEmpty) return '*Masukkan Email Anda!';
-      if (!regex.hasMatch(value))
+      if (!regex.hasMatch(value)) {
         return '*Mohon Masukkan Email yang Valid!';
-      else
+      } else {
         return null;
+      }
     }
 
     final logoPintas = Hero(
@@ -64,11 +65,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
     final loadIndicator = Center(
       child: CircularProgressIndicator(
-        valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
       ),
     );
 
-    final next = Container(
+    final next = SizedBox(
       width: double.infinity,
       height: 55.h,
       child: RaisedButton(
@@ -123,7 +124,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         centerTitle: true,
         automaticallyImplyLeading: true,
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         child: Padding(

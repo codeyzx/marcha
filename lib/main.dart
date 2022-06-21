@@ -5,8 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/cubit/page_cubit.dart';
 import 'package:marcha_branch/ui/botnavbar.dart';
-import 'package:marcha_branch/ui/create_group/createGroup_page.dart';
-import 'package:marcha_branch/ui/friends/friends_page.dart';
 import 'package:marcha_branch/ui/history/history_page.dart';
 import 'package:marcha_branch/ui/onboard/onboard_page.dart';
 import 'package:marcha_branch/ui/onboard/splash_page.dart';

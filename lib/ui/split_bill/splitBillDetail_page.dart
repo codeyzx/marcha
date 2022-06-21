@@ -139,7 +139,7 @@ class _SplitBillDetailPageState extends State<SplitBillDetailPage> {
                                         Column(
                                           children: [
                                             SizedBox(height: 5.h),
-                                            Container(
+                                            SizedBox(
                                               width: 60.w,
                                               height: 83.h,
                                               child: Column(
@@ -439,7 +439,7 @@ class _SplitBillDetailPageState extends State<SplitBillDetailPage> {
                                         Column(
                                           children: [
                                             SizedBox(height: 5.h),
-                                            Container(
+                                            SizedBox(
                                               width: 60.w,
                                               height: 83.h,
                                               child: Column(

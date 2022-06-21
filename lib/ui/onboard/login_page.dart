@@ -16,13 +16,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _email = new TextEditingController();
-  TextEditingController _password = new TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _loading = false;
   String errorMsg = "";
 
+  @override
   void initState() {
     super.initState();
   }
@@ -66,11 +67,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final loadIndicator = Center(
       child: CircularProgressIndicator(
-        valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
       ),
     );
 
-    final signup_desc = Text(
+    final signupDesc = Text(
       'Belum Punya Akun Schoop?',
       style: TextStyle(
         fontSize: 15.sp,
@@ -172,12 +173,13 @@ class _LoginPageState extends State<LoginPage> {
     String? emailValidator(value) {
       var pattern =
           r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-      RegExp regex = new RegExp(pattern);
+      RegExp regex = RegExp(pattern);
       if (value.isEmpty) return 'Masukkan Email Anda!';
-      if (!regex.hasMatch(value))
+      if (!regex.hasMatch(value)) {
         return 'Mohon Masukkan Email yang Valid!';
-      else
+      } else {
         return null;
+      }
     }
 
     return Scaffold(
@@ -186,9 +188,9 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () {
-            FocusScope.of(context).requestFocus(new FocusNode());
+            FocusScope.of(context).requestFocus(FocusNode());
           },
-          child: Container(
+          child: SizedBox(
             width: 1.sw,
             height: 1.sh,
             child: Center(
@@ -331,8 +333,9 @@ class _LoginPageState extends State<LoginPage> {
                             obscureText: _passwordVisible,
                             controller: _password,
                             validator: (value) {
-                              if (value!.isEmpty)
+                              if (value!.isEmpty) {
                                 return 'Masukkan Kata Sandi Anda!';
+                              }
                               return null;
                             },
                             autovalidateMode:
@@ -368,7 +371,7 @@ class _LoginPageState extends State<LoginPage> {
                         Row(
                           children: [
                             Container(
-                              child: signup_desc,
+                              child: signupDesc,
                             ),
                             Container(
                               child: daftar,

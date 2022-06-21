@@ -7,7 +7,6 @@ import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:marcha_branch/ui/friends/friends_page.dart';
 import 'package:marcha_branch/ui/qr/qr_scan.dart';
-import 'package:marcha_branch/ui/split_bill/splitBillAdvanced_page.dart';
 import 'package:marcha_branch/ui/split_bill/splitBillDetail_page.dart';
 
 class SplitBillPage extends StatefulWidget {
@@ -60,7 +59,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
       ),
       body: GestureDetector(
         onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+          FocusScope.of(context).requestFocus(FocusNode());
         },
         child: SingleChildScrollView(
           physics: ScrollPhysics(),
@@ -393,7 +392,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
                                               Column(
                                                 children: [
                                                   SizedBox(height: 5.h),
-                                                  Container(
+                                                  SizedBox(
                                                     width: 60.w,
                                                     height: 83.h,
                                                     child: Column(

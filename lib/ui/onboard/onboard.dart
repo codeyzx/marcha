@@ -56,7 +56,7 @@ class _OnboardState extends State<Onboard> {
               SizedBox(
                 height: 31.h,
               ),
-              Container(
+              SizedBox(
                 width: 281.w,
                 height: 42.h,
                 child: Stack(

@@ -1,12 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
-import 'package:marcha_branch/ui/friends/friends_page.dart';
-import 'package:marcha_branch/ui/send/send_page.dart';
 import 'package:marcha_branch/ui/virtucard/virtucard_create_page.dart';
 import 'package:marcha_branch/ui/virtucard/virtucard_detail_page.dart';
 
@@ -42,7 +37,7 @@ class _VirtucardPageState extends State<VirtucardPage> {
       ),
       body: GestureDetector(
         onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+          FocusScope.of(context).requestFocus(FocusNode());
         },
         child: SingleChildScrollView(
           physics: ScrollPhysics(),

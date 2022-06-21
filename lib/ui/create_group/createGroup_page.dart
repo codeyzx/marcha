@@ -291,7 +291,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                                                       Column(
                                                         children: [
                                                           SizedBox(height: 5.h),
-                                                          Container(
+                                                          SizedBox(
                                                             width: 60.w,
                                                             height: 83.h,
                                                             child: Column(
@@ -830,7 +830,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                                                       Column(
                                                         children: [
                                                           SizedBox(height: 5.h),
-                                                          Container(
+                                                          SizedBox(
                                                             width: 60.w,
                                                             height: 83.h,
                                                             child: Column(

@@ -6,7 +6,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:marcha_branch/ui/send/send_page.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({Key? key}) : super(key: key);

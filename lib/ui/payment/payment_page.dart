@@ -7,7 +7,6 @@ import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marcha_branch/ui/payment/payment_remind_success_page.dart';
-import 'package:marcha_branch/ui/payment/payment_success_page.dart';
 import 'package:marcha_branch/ui/pin/otp.dart';
 import 'package:marcha_branch/ui/request/request_otp.dart';
 import 'package:marcha_branch/ui/split_bill/split_otp.dart';

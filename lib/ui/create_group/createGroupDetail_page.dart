@@ -161,7 +161,7 @@ class _CreateGroupDetailPageState extends State<CreateGroupDetailPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 85.w,
                         height: 85.h,
                         child: Stack(
@@ -206,7 +206,7 @@ class _CreateGroupDetailPageState extends State<CreateGroupDetailPage> {
                           ],
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: 222.w,
                         height: 35.h,
                         child: Form(
@@ -254,7 +254,7 @@ class _CreateGroupDetailPageState extends State<CreateGroupDetailPage> {
                             itemBuilder: (context, int index) {
                               return InkWell(
                                 onTap: () {},
-                                child: Container(
+                                child: SizedBox(
                                   width: 70.w,
                                   child: Column(
                                     crossAxisAlignment:

@@ -1,12 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
-import 'package:marcha_branch/ui/friends/friends_page.dart';
-import 'package:marcha_branch/ui/virtucard/virtucard_set_page.dart';
 
 class VirtucardDetailPage extends StatefulWidget {
   const VirtucardDetailPage({Key? key}) : super(key: key);
@@ -92,7 +86,7 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                         return Padding(
                           padding: const EdgeInsets.only(
                               right: 15.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 60.w,
                             height: 83.h,
                             child: Column(

@@ -39,7 +39,7 @@ class _ChatRoomState extends State<ChatRoom> {
   Widget build(BuildContext context) {
     final TextEditingController _note = TextEditingController();
     final String date = DateTime.now().toIso8601String();
-    int total_unread;
+    int totalUnread;
     CollectionReference chats = FirebaseFirestore.instance.collection('chats');
     CollectionReference users = FirebaseFirestore.instance.collection('users');
 
@@ -56,7 +56,7 @@ class _ChatRoomState extends State<ChatRoom> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: 200,
                   height: 100,
                   child: Card(
@@ -144,7 +144,7 @@ class _ChatRoomState extends State<ChatRoom> {
                                         .where('pengirim', isEqualTo: _pengirim)
                                         .get();
                                         
-                                    total_unread = checkTotalUnread.docs.length;
+                                    totalUnread = checkTotalUnread.docs.length;
 
                                     await users
                                         .doc(_penerimaID)
@@ -152,7 +152,7 @@ class _ChatRoomState extends State<ChatRoom> {
                                         .doc(_chatID)
                                         .update({
                                       'lastTime': date,
-                                      'total_unread': total_unread,
+                                      'total_unread': totalUnread,
                                     });
                                     
                                   } else {

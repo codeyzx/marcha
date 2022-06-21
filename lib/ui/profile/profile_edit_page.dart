@@ -8,7 +8,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/models/user_model.dart';
-import 'package:marcha_branch/services/user_service.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marcha_branch/ui/botnavbar.dart';

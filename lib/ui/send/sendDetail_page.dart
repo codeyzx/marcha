@@ -312,7 +312,7 @@ class _SendDetailState extends State<SendDetail> {
                                                                           CrossAxisAlignment
                                                                               .start,
                                                                       children: [
-                                                                        Container(
+                                                                        SizedBox(
                                                                             width:
                                                                                 245.w,
                                                                             child: Text(
@@ -321,7 +321,7 @@ class _SendDetailState extends State<SendDetail> {
                                                                               overflow: TextOverflow.ellipsis,
                                                                               maxLines: 1,
                                                                             )),
-                                                                        Container(
+                                                                        SizedBox(
                                                                             width:
                                                                                 245.w,
                                                                             child: Text(

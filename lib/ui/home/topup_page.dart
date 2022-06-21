@@ -1,12 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:marcha_branch/api/api_base_helper.dart';
 import 'package:marcha_branch/api/api_response.dart';
 import 'package:marcha_branch/cubit/topup_bloc.dart';
 import 'package:marcha_branch/models/topup.dart';
-import 'package:http/http.dart' as http;
 
 class TopUpHalaman extends StatefulWidget {
   const TopUpHalaman({Key? key}) : super(key: key);
@@ -184,12 +182,12 @@ class TopUpDetail extends StatelessWidget {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    var order_id = DateTime.now().millisecondsSinceEpoch;
+                    var orderId = DateTime.now().millisecondsSinceEpoch;
                     Map data = {
                       "payment_type": "bank_transfer",
                       "bank_transfer": {"bank": "permata"},
                       "transaction_details": {
-                        "order_id": order_id.toString(),
+                        "order_id": orderId.toString(),
                         "gross_amount": harga
                       },
                       "tiket_id": id,
@@ -200,7 +198,7 @@ class TopUpDetail extends StatelessWidget {
                         "https://marcha-api-test-production.up.railway.app/order/charge",
                         body);
 
-                    Navigator.of(context).push(MaterialPageRoute<Null>(
+                    Navigator.of(context).push(MaterialPageRoute<void>(
                         builder: (BuildContext context) {
                           return orderDetail(hasil: response.toString());
                         },
@@ -345,7 +343,7 @@ class _TopUpDuaState extends State<TopUpDua> {
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(24),
-            child: Container(
+            child: SizedBox(
               width: double.infinity,
               height: 45,
               child: RaisedButton(
@@ -413,7 +411,7 @@ class _TopUpDuaState extends State<TopUpDua> {
 
 //HASIL ORDER
 class orderDetail extends StatelessWidget {
-  orderDetail({key, required this.hasil}) : super(key: key);
+  const orderDetail({key, required this.hasil}) : super(key: key);
 
   final String hasil;
 
