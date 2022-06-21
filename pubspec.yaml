@@ -52,7 +52,7 @@ dependencies:
   permission_handler: ^9.2.0
   persistent_bottom_nav_bar: ^4.0.2
   pin_code_fields: ^7.4.0
-  qr_code_scanner: ^0.7.0
+  qr_code_scanner: ^1.0.0
   qr_flutter: ^4.0.0
   shared_preferences: ^2.0.13
   smooth_page_indicator: ^1.0.0+2
