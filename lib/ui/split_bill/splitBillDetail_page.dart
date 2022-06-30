@@ -14,6 +14,7 @@ class SplitBillDetailPage extends StatefulWidget {
   final List<String> friendName;
   final List<String> friendID;
   final List<String> friendEmail;
+  final List<String> friendDeviceToken;
   final List<String> friendPhoto;
   final String groupID;
   final String userName;
@@ -26,6 +27,7 @@ class SplitBillDetailPage extends StatefulWidget {
     required this.friendName,
     required this.friendID,
     required this.friendEmail,
+    required this.friendDeviceToken,
     required this.friendPhoto,
     required this.groupID,
     required this.userName,
@@ -40,6 +42,7 @@ class SplitBillDetailPage extends StatefulWidget {
         friendName,
         friendID,
         friendEmail,
+        friendDeviceToken,
         friendPhoto,
         groupID,
         userName,
@@ -57,6 +60,7 @@ class _SplitBillDetailPageState extends State<SplitBillDetailPage> {
   final List<String> _friendName;
   final List<String> _friendID;
   final List<String> _friendEmail;
+  final List<String> _friendDeviceToken;
   final List<String> _friendPhoto;
   final String _groupID;
   final String _userName;
@@ -70,6 +74,7 @@ class _SplitBillDetailPageState extends State<SplitBillDetailPage> {
     this._friendName,
     this._friendID,
     this._friendEmail,
+    this._friendDeviceToken,
     this._friendPhoto,
     this._groupID,
     this._userName,
@@ -360,6 +365,8 @@ class _SplitBillDetailPageState extends State<SplitBillDetailPage> {
                                                     concatenate.toString())!,
                                                 isGroup: true,
                                                 groupID: _groupID,
+                                                friendDeviceToken:
+                                                    _friendDeviceToken,
                                               )));
                                 }
                               },
@@ -690,6 +697,8 @@ class _SplitBillDetailPageState extends State<SplitBillDetailPage> {
                                                     concatenate.toString())!,
                                                 isGroup: false,
                                                 groupID: _groupID,
+                                                friendDeviceToken:
+                                                    _friendDeviceToken,
                                               )));
                                 }
                               },

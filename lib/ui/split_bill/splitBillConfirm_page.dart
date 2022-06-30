@@ -9,6 +9,7 @@ class SplitBillConfirmPage extends StatefulWidget {
   final List<String> friendName;
   final List<String> friendID;
   final List<String> friendEmail;
+  final List<String> friendDeviceToken;
   final List<String> friendPhoto;
   final String groupID;
   final String userName;
@@ -25,6 +26,7 @@ class SplitBillConfirmPage extends StatefulWidget {
       required this.friendName,
       required this.friendID,
       required this.friendEmail,
+      required this.friendDeviceToken,
       required this.friendPhoto,
       required this.groupID,
       required this.userName,
@@ -42,6 +44,7 @@ class SplitBillConfirmPage extends StatefulWidget {
       friendName,
       friendID,
       friendEmail,
+      friendDeviceToken,
       friendPhoto,
       groupID,
       userName,
@@ -57,6 +60,7 @@ class _SplitBillConfirmPageState extends State<SplitBillConfirmPage> {
   final List<String> _friendName;
   final List<String> _friendID;
   final List<String> _friendEmail;
+  final List<String> _friendDeviceToken;
   final List<String> _friendPhoto;
   final bool isGroup;
   final String _groupID;
@@ -73,6 +77,7 @@ class _SplitBillConfirmPageState extends State<SplitBillConfirmPage> {
       this._friendName,
       this._friendID,
       this._friendEmail,
+      this._friendDeviceToken,
       this._friendPhoto,
       this._groupID,
       this._userName,
@@ -275,6 +280,7 @@ class _SplitBillConfirmPageState extends State<SplitBillConfirmPage> {
                                 dateTime: _dateTime,
                                 isGroup: true,
                                 groupID: _groupID,
+                                friendDeviceToken: _friendDeviceToken,
                               ),
                             ));
                       },
@@ -478,6 +484,7 @@ class _SplitBillConfirmPageState extends State<SplitBillConfirmPage> {
                                 dateTime: _dateTime,
                                 isGroup: false,
                                 groupID: _groupID,
+                                friendDeviceToken: _friendDeviceToken,
                               ),
                             ));
                       },

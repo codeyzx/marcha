@@ -15,6 +15,7 @@ class RequestDetail extends StatefulWidget {
   final String userReqPhoto;
   final String userTargetID;
   final String userTargetEmail;
+  final String userTargetDeviceToken;
   final String userTargetName;
   final String userTargetPhoto;
   const RequestDetail({
@@ -25,6 +26,7 @@ class RequestDetail extends StatefulWidget {
     required this.userReqPhoto,
     required this.userTargetID,
     required this.userTargetEmail,
+    required this.userTargetDeviceToken,
     required this.userTargetName,
     required this.userTargetPhoto,
   }) : super(key: key);
@@ -38,6 +40,7 @@ class RequestDetail extends StatefulWidget {
       userReqPhoto,
       userTargetID,
       userTargetEmail,
+      userTargetDeviceToken,
       userTargetName,
       userTargetPhoto);
 }
@@ -52,6 +55,7 @@ class _RequestDetailState extends State<RequestDetail> {
   final String _userReqPhoto;
   final String _userTargetID;
   final String _userTargetEmail;
+  final String _userTargetDeviceToken;
   final String _userTargetName;
   final String _userTargetPhoto;
 
@@ -64,6 +68,7 @@ class _RequestDetailState extends State<RequestDetail> {
       this._userReqPhoto,
       this._userTargetID,
       this._userTargetEmail,
+      this._userTargetDeviceToken,
       this._userTargetName,
       this._userTargetPhoto);
 
@@ -486,6 +491,7 @@ class _RequestDetailState extends State<RequestDetail> {
                                             'userTargetID': _userTargetID,
                                             'userTargetName': _userTargetName,
                                             'userTargetEmail': _userTargetEmail,
+                                            'userTargetDeviceToken': _userTargetDeviceToken,
                                             'userTargetPhoto': _userTargetPhoto,
                                             'startTime': DateTime.now(),
                                             'endTime': dateTime,

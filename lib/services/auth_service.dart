@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:marcha_branch/models/user_model.dart';
 import 'package:marcha_branch/services/user_service.dart';
@@ -147,6 +148,8 @@ class AuthService {
           .signInWithCredential(credential)
           .then((value) => userCredential = value);
 
+      String? token = await FirebaseMessaging.instance.getToken();
+
       print('USER CREDENTIAL:');
       print(userCredential);
 
@@ -173,6 +176,7 @@ class AuthService {
           'lastSignInTime':
               userCredential!.user!.metadata.lastSignInTime!.toIso8601String(),
           'updatedTime': DateTime.now().toIso8601String(),
+          'deviceToken': token,
           'pin': 0,
           // 'chats': []
         });
@@ -242,13 +246,15 @@ class AuthService {
           .createUserWithEmailAndPassword(email: email, password: password);
       print('======= MASUK USERMODEL ');
       UserModel user = UserModel(
-        id: userCredential.user!.uid,
-        email: email,
-        name: name,
-        photo: '',
-        balance: 0, pin: 1234,
-        // chats: []
-      );
+          id: userCredential.user!.uid,
+          email: email,
+          name: name,
+          photo: '',
+          balance: 0,
+          pin: 1234,
+          deviceToken: ''
+          // chats: []
+          );
 
       print('======= HAMPIR MASUK SET USER ');
       await UserService().setUser(user);

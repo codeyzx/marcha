@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import 'package:marcha_branch/ui/payment/payment_remind_success_page.dart';
 import 'package:marcha_branch/ui/pin/otp.dart';
 import 'package:marcha_branch/ui/request/request_otp.dart';
 import 'package:marcha_branch/ui/split_bill/split_otp.dart';
+import 'package:http/http.dart' as http;
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
@@ -1521,7 +1524,8 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                       width: 1.sw,
                                                                                                                       height: 50.h,
                                                                                                                       child: TextButton(
-                                                                                                                        onPressed: () {
+                                                                                                                        onPressed: () async {
+                                                                                                                          await sendPushMessage("Mohon lakukan pembayaran sejumlah ${convertToIdr(e3['amount'])} dengan catatan ${e2['note']}", "${state.user.name} mengirim notifikasi!", e3['userTargetDeviceToken']);
                                                                                                                           Navigator.push(
                                                                                                                               context,
                                                                                                                               MaterialPageRoute(
@@ -2018,7 +2022,8 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                         width: 1.sw,
                                                                                                         height: 50.h,
                                                                                                         child: TextButton(
-                                                                                                          onPressed: () {
+                                                                                                          onPressed: () async {
+                                                                                                            await sendPushMessage("Mohon lakukan pembayaran sejumlah ${convertToIdr(e2['amount'])} dengan catatan ${e2['note']}", "${state.user.name} mengirim notifikasi!", e2['userTargetDeviceToken']);
                                                                                                             Navigator.push(
                                                                                                                 context,
                                                                                                                 MaterialPageRoute(
@@ -2944,4 +2949,35 @@ class _PaymentPageState extends State<PaymentPage> {
   //   );
   // }
 
+}
+
+Future<void> sendPushMessage(String body, String title, String token) async {
+  try {
+    await http.post(
+      Uri.parse('https://fcm.googleapis.com/fcm/send'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization':
+            'key=AAAA9XZ2bVE:APA91bGXuEwzcU9ncfQhipfeijm2G6bc74Mh8WElbqOYqZPcs8x-Wtf7C8VVCJC16PLvUglmZpAlENGn8dpfif2fEnfriHjX6fO4yrU1yyZeuZWxlbskG6HEjDElW4fbm71cthGojobw',
+      },
+      body: jsonEncode(
+        <String, dynamic>{
+          'notification': <String, dynamic>{
+            'body': body,
+            'title': title,
+          },
+          'priority': 'high',
+          'data': <String, dynamic>{
+            'click_action': 'FLUTTER_NOTIFICATION_CLICK',
+            'id': '1',
+            'status': 'done'
+          },
+          "to": token,
+        },
+      ),
+    );
+    print('done');
+  } catch (e) {
+    print("error push notification");
+  }
 }

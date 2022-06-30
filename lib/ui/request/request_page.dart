@@ -299,24 +299,25 @@ class _RequestPageState extends State<RequestPage> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         RequestDetail(
-                                                            userReqID: state
-                                                                .user.id,
+                                                            userReqID:
+                                                                state.user.id,
                                                             userReqEmail: state
                                                                 .user.email,
-                                                            userReqName: state
-                                                                .user.name,
+                                                            userReqName:
+                                                                state.user.name,
                                                             userReqPhoto: state
                                                                 .user.photo,
                                                             userTargetID: e.id,
+                                                            userTargetDeviceToken:
+                                                                e['deviceToken'],
                                                             userTargetEmail:
                                                                 e['email'],
                                                             userTargetName:
                                                                 e['name'],
-                                                            userTargetPhoto: e[
-                                                                        'photo'] ==
-                                                                    ''
-                                                                ? ''
-                                                                : e['photo']))),
+                                                            userTargetPhoto:
+                                                                e['photo'] == ''
+                                                                    ? ''
+                                                                    : e['photo']))),
                                             child: Row(
                                               children: [
                                                 ClipRRect(

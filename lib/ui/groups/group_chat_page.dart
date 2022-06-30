@@ -454,6 +454,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
                         userPhoto: userPhoto!,
                         isGroup: true,
                         groupID: _groupID,
+                        friendDeviceToken: const ['joni'],
                       ),
                     ),
                   );

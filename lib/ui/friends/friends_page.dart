@@ -258,6 +258,8 @@ class FriendsPage extends StatelessWidget {
                                                             'name': e['name'],
                                                             'email': e['email'],
                                                             'photo': e['photo'],
+                                                            'deviceToken': e[
+                                                                'deviceToken'],
                                                             'isRequest': true,
                                                             'statusRequest':
                                                                 true,
@@ -278,6 +280,9 @@ class FriendsPage extends StatelessWidget {
                                                                 .user.email,
                                                             'photo': state
                                                                 .user.photo,
+                                                            'deviceToken': state
+                                                                .user
+                                                                .deviceToken,
                                                             'isRequest': false,
                                                             'statusRequest':
                                                                 true,

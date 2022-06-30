@@ -13,6 +13,7 @@ class SplitBillAdvancedPage extends StatefulWidget {
   final List<String> friendID;
   final List<String> friendEmail;
   final List<String> friendPhoto;
+  final List<String> friendDeviceToken;
   final String groupID;
   final String userName;
   final String userID;
@@ -28,6 +29,7 @@ class SplitBillAdvancedPage extends StatefulWidget {
     required this.friendID,
     required this.friendEmail,
     required this.friendPhoto,
+    required this.friendDeviceToken,
     required this.groupID,
     required this.userName,
     required this.userID,
@@ -45,6 +47,7 @@ class SplitBillAdvancedPage extends StatefulWidget {
       friendID,
       friendEmail,
       friendPhoto,
+      friendDeviceToken,
       groupID,
       userName,
       userID,
@@ -63,6 +66,7 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
   final List<String> _friendID;
   final List<String> _friendEmail;
   final List<String> _friendPhoto;
+  final List<String> _friendDeviceToken;
   final String _groupID;
   final String _userName;
   final String _userID;
@@ -78,6 +82,7 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
     this._friendID,
     this._friendEmail,
     this._friendPhoto,
+    this._friendDeviceToken,
     this._groupID,
     this._userName,
     this._userID,
@@ -796,6 +801,7 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
                                     'userTargetName': _friendName[i],
                                     'userTargetEmail': _friendEmail[i],
                                     'userTargetPhoto': _friendPhoto[i],
+                                    'userTargetDeviceToken': _friendDeviceToken[i],
                                     'status': false,
                                     'statusPayment': false,
                                     'amount': int.tryParse(

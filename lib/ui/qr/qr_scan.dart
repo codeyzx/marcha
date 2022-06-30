@@ -435,6 +435,7 @@ class _QrScanState extends State<QrScan> {
                                                                                   userTargetEmail: e['email'],
                                                                                   userTargetName: e['name'],
                                                                                   userTargetPhoto: e['photo'],
+                                                                                  userTargetDeviceToken: e['deviceToken'],
                                                                                 ),
                                                                               ));
                                                                         },

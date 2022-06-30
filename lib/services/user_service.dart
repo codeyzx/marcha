@@ -27,6 +27,7 @@ class UserService {
         photo: snapshot['photo'],
         balance: snapshot['balance'],
         pin: snapshot['pin'],
+        deviceToken: snapshot['deviceToken'],
       );
     } catch (e) {
       rethrow;

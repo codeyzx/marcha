@@ -21,6 +21,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
   List<String> friendID = [];
   List<String> friendEmail = [];
   List<String> friendPhoto = [];
+  List<String> friendDeviceToken = [];
 
   @override
   Widget build(BuildContext context) {
@@ -226,6 +227,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
                                                         e['name'],
                                                         e.id,
                                                         e['email'],
+                                                        e['deviceToken'],
                                                         e['photo'] == '' ||
                                                                 e['photo'] ==
                                                                     null
@@ -444,6 +446,9 @@ class _SplitBillPageState extends State<SplitBillPage> {
                                                           friendPhoto.remove(
                                                               friendPhoto[
                                                                   index]);
+                                                          friendDeviceToken.remove(
+                                                              friendDeviceToken[
+                                                                  index]);
                                                         });
                                                       },
                                                       child: Image.asset(
@@ -507,6 +512,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
                                                       e['name'],
                                                       e.id,
                                                       e['email'],
+                                                      e['deviceToken'],
                                                       e['photo'] == '' ||
                                                               e['photo'] == null
                                                           ? "https://cerahnews.com/wp-content/uploads/2018/01/16176889_112685309244626_578204711_n-e1516135518784.jpg"
@@ -616,6 +622,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
                                     userPhoto: state.user.photo,
                                     isGroup: false,
                                     groupID: 'notexist',
+                                    friendDeviceToken: friendDeviceToken,
                                   ),
                                 ));
                       },
@@ -646,6 +653,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
     String name,
     String id,
     String email,
+    String deviceToken,
     String picture,
   ) {
     if (selected == true) {
@@ -654,6 +662,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
         friendID.add(id);
         friendEmail.add(email);
         friendPhoto.add(picture);
+        friendDeviceToken.add(deviceToken);
       });
     } else {
       setState(() {
@@ -661,6 +670,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
         friendID.remove(id);
         friendEmail.remove(email);
         friendPhoto.remove(picture);
+        friendDeviceToken.remove(deviceToken);
       });
     }
   }

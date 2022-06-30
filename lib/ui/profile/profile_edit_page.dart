@@ -282,6 +282,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                                 photo: e['photo'],
                                                 balance: e['balance'],
                                                 pin: e['pin'],
+                                                deviceToken: e['deviceToken'],
                                               );
 
                                               Navigator.pushReplacement(

@@ -141,30 +141,33 @@ class UserModel {
   final String email;
   final String name;
   final String photo;
+  final String deviceToken;
   final int balance;
   final int pin;
   // final List? chats;
 
-  const UserModel(
-      {required this.id,
-      required this.email,
-      required this.name,
-      required this.photo,
-      required this.balance,
-      required this.pin,
-      // required this.chats
-      });
+  const UserModel({
+    required this.id,
+    required this.email,
+    required this.name,
+    required this.photo,
+    required this.deviceToken,
+    required this.balance,
+    required this.pin,
+    // required this.chats
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-      id: json['id'],
-      email: json['email'],
-      name: json['name'],
-      photo: json['photo'],
-      balance: json['balance'],
-      pin: json['pin'],
-      // chats:
-          // List<ChatUser>.from(json['chats'].map((x) => ChatUser.fromJson(x)))
-          );
+        id: json['id'],
+        email: json['email'],
+        name: json['name'],
+        photo: json['photo'],
+        balance: json['balance'],
+        pin: json['pin'],
+        deviceToken: json['deviceToken'],
+        // chats:
+        // List<ChatUser>.from(json['chats'].map((x) => ChatUser.fromJson(x)))
+      );
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -173,6 +176,7 @@ class UserModel {
         'photo': photo,
         'balance': balance,
         'pin': pin,
+        'deviceToken': deviceToken,
         // 'chats': List<dynamic>.from(chats!.map((e) => e.toJson())),
       };
 }
@@ -191,11 +195,10 @@ class ChatUser {
   final int totalUnread;
 
   factory ChatUser.fromJson(Map<String, dynamic> json) => ChatUser(
-      connection: json['connection'],
-      chatId: json['chatId'],
-      lastTime: json['lastTime'],
-      totalUnread: json['totalUnread'],
-      
+        connection: json['connection'],
+        chatId: json['chatId'],
+        lastTime: json['lastTime'],
+        totalUnread: json['totalUnread'],
       );
 
   Map<String, dynamic> toJson() => {

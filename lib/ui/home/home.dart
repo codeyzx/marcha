@@ -2261,6 +2261,8 @@ class _HomePageState extends State<HomePage> {
         ),
       );
 
+  /*
+  // JON
   // Widget buildSheetMore() {
   //   return makeDismissible(
   //     child: DraggableScrollableSheet(
@@ -2544,5 +2546,5 @@ class _HomePageState extends State<HomePage> {
   //               ),
   //             )),
   //   );
-  // }
+  // }*/
 }
