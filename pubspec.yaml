@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  build_runner: ^2.1.11
   cloud_firestore: ^3.1.10
   cupertino_icons: ^1.0.2
   currency_text_input_formatter: ^2.1.5
@@ -48,9 +49,13 @@ dependencies:
   google_fonts: ^2.3.1
   google_sign_in: ^5.2.4
   hexcolor: ^2.0.6
+  hive: ^2.2.2
+  hive_flutter: ^1.1.0
+  hive_generator: ^1.1.3
   http: ^0.13.4
   image_picker: ^0.8.5+3
   intl: ^0.17.0
+  midtrans_sdk: ^0.3.4
   permission_handler: ^9.2.0
   persistent_bottom_nav_bar: ^4.0.2
   pin_code_fields: ^7.4.0

@@ -23,7 +23,9 @@ class ApiBaseHelper {
     var responseJson;
     try {
       final response = await http.post(Uri.parse(url),
-          headers: {"Content-Type": "application/json"}, body: body);
+          headers: <String, String>{"Content-Type": "application/json"},
+          body: body);
+      print('INI RESPONSE DARI POST $response');
       responseJson = _returnResponse(response);
     } on SocketException {
       print('masuk post');
@@ -80,6 +82,6 @@ dynamic _returnResponse(http.Response response) {
     case 500:
     default:
       throw FetchDataException(
-          'Gagal terhubung dengan server dengan Status Code : ${response.statusCode}');
+          'Gagal terhubung dengan server dengan Status Code : ${response.body.toString()}');
   }
 }

@@ -2953,6 +2953,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
 Future<void> sendPushMessage(String body, String title, String token) async {
   try {
+    // FCM Operation
     await http.post(
       Uri.parse('https://fcm.googleapis.com/fcm/send'),
       headers: <String, String>{
@@ -2968,14 +2969,14 @@ Future<void> sendPushMessage(String body, String title, String token) async {
           },
           'priority': 'high',
           'data': <String, dynamic>{
-            'click_action': 'FLUTTER_NOTIFICATION_CLICK',
-            'id': '1',
-            'status': 'done'
+            'body': body,
+            'title': title,
           },
           "to": token,
         },
       ),
     );
+
     print('done');
   } catch (e) {
     print("error push notification");
