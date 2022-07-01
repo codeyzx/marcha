@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       body: ListView(
+        padding: EdgeInsets.zero,
         children: [
           Image.asset('assets/images/login-bg-top.png'),
           Container(

@@ -90,6 +90,7 @@ class _SendDetailState extends State<SendDetail> {
         centerTitle: true,
       ),
       body: ListView(
+        padding: EdgeInsets.zero,
         children: [
           Padding(
             padding: EdgeInsets.only(

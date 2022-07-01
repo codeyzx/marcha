@@ -104,6 +104,7 @@ class _SignupPageState extends State<SignupPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
+        padding: EdgeInsets.zero,
         children: [
           Image.asset('assets/images/login-bg-top.png'),
           Container(

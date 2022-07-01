@@ -33,6 +33,7 @@ class _NotificationPageState extends State<NotificationPage> {
         ),
       ),
       body: ListView(
+        padding: EdgeInsets.zero,
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
