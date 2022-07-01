@@ -54,6 +54,7 @@ class _GroupAddState extends State<GroupAdd> {
         centerTitle: true,
       ),
       body: ListView(
+        padding: EdgeInsets.zero,
         children: [
           Padding(
             padding: EdgeInsets.only(

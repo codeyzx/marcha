@@ -95,6 +95,7 @@ class _RequestDetailState extends State<RequestDetail> {
         centerTitle: true,
       ),
       body: ListView(
+        padding: EdgeInsets.zero,
         children: [
           Padding(
             padding: EdgeInsets.only(

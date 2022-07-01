@@ -109,6 +109,7 @@ class _SplitBillDetailPageState extends State<SplitBillDetailPage> {
               centerTitle: true,
             ),
             body: ListView(
+              padding: EdgeInsets.zero,
               children: [
                 Padding(
                   padding: EdgeInsets.only(
@@ -411,6 +412,7 @@ class _SplitBillDetailPageState extends State<SplitBillDetailPage> {
               centerTitle: true,
             ),
             body: ListView(
+              padding: EdgeInsets.zero,
               children: [
                 Padding(
                   padding: EdgeInsets.only(

@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: HexColor("#F8F6FF"),
       body: ListView(
+        padding: EdgeInsets.zero,
         children: [
           Column(
             children: [
