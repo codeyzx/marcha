@@ -95,7 +95,7 @@ class _RequestPageState extends State<RequestPage> {
                             .snapshots(),
                         builder: (_, snapshot) {
                           if (snapshot.hasData) {
-                            print('SNAPSHOT CENAH');
+                            //print('SNAPSHOT CENAH');
                             if (snapshot.data!.docs.isNotEmpty) {
                               var okedek = snapshot.data!.docs.length;
 
@@ -126,7 +126,7 @@ class _RequestPageState extends State<RequestPage> {
                             .snapshots(),
                         builder: (_, snapshot) {
                           if (snapshot.hasData) {
-                            print('SNAPSHOT CENAH');
+                            //print('SNAPSHOT CENAH');
                             if (snapshot.data!.docs.isNotEmpty) {
                               var okedek = snapshot.data!.docs.length;
 
@@ -297,27 +297,26 @@ class _RequestPageState extends State<RequestPage> {
                                             onTap: () => Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        RequestDetail(
-                                                            userReqID:
-                                                                state.user.id,
-                                                            userReqEmail: state
-                                                                .user.email,
-                                                            userReqName:
-                                                                state.user.name,
-                                                            userReqPhoto: state
-                                                                .user.photo,
-                                                            userTargetID: e.id,
-                                                            userTargetDeviceToken:
-                                                                e['deviceToken'],
-                                                            userTargetEmail:
-                                                                e['email'],
-                                                            userTargetName:
-                                                                e['name'],
-                                                            userTargetPhoto:
-                                                                e['photo'] == ''
-                                                                    ? ''
-                                                                    : e['photo']))),
+                                                    builder: (context) => RequestDetail(
+                                                        userReqID:
+                                                            state.user.id,
+                                                        userReqEmail:
+                                                            state.user.email,
+                                                        userReqName:
+                                                            state.user.name,
+                                                        userReqPhoto:
+                                                            state.user.photo,
+                                                        userTargetID: e.id,
+                                                        userTargetDeviceToken:
+                                                            e['deviceToken'],
+                                                        userTargetEmail:
+                                                            e['email'],
+                                                        userTargetName:
+                                                            e['name'],
+                                                        userTargetPhoto:
+                                                            e['photo'] == ''
+                                                                ? ''
+                                                                : e['photo']))),
                                             child: Row(
                                               children: [
                                                 ClipRRect(

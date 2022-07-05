@@ -100,7 +100,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
                                   .snapshots(),
                               builder: (_, snapshot) {
                                 if (snapshot.hasData) {
-                                  print('SNAPSHOT CENAH');
+                                  //print('SNAPSHOT CENAH');
                                   if (snapshot.data!.docs.isNotEmpty) {
                                     var okedek = snapshot.data!.docs.length;
 
@@ -132,7 +132,7 @@ class _SplitBillPageState extends State<SplitBillPage> {
                                   .snapshots(),
                               builder: (_, snapshot) {
                                 if (snapshot.hasData) {
-                                  print('SNAPSHOT CENAH');
+                                  //print('SNAPSHOT CENAH');
                                   if (snapshot.data!.docs.isNotEmpty) {
                                     var okedek = snapshot.data!.docs.length;
 

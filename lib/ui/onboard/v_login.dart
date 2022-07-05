@@ -194,11 +194,10 @@ class _LoginPageState extends State<LoginPage> {
                   // Button Google
                   InkWell(
                     onTap: () async {
-                      await context.read<AuthCubit>().googleLogin();
-                      final GoogleSignIn _googleSignIn = GoogleSignIn();
-                      final isSignIn = await _googleSignIn.isSignedIn();
-
                       try {
+                        await context.read<AuthCubit>().googleLogin();
+                        final GoogleSignIn _googleSignIn = GoogleSignIn();
+                        final isSignIn = await _googleSignIn.isSignedIn();
                         if (isSignIn) {
                           print('MASUK IS SIGN IN');
                           // Navigator.pushReplacement(

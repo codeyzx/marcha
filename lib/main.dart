@@ -129,30 +129,21 @@ Future<void> requestPermission() async {
 }
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
-  // Hive Operation
   try {
     // Hive Setup
     await Hive.initFlutter();
-    // Hive.registerAdapter(NotificationTransactionAdapter());
     await Hive.openBox('notif');
 
     // Hive Operation
-    // final notification = NotificationTransaction()
-    //   ..title = message.data['title']
-    //   ..body = message.data['body'];
     final box = Hive.box('notif');
     await box.add({
       'title': message.data['title'],
       'body': message.data['body'],
     });
+    print('background');
   } catch (e) {
     print(e);
   }
-
-  // print("Handling a background message: ${message.messageId}");
-  // print(message.data);
 }
 
 Future<void> loadFCM() async {
@@ -193,6 +184,7 @@ Future<void> listenFCM() async {
     RemoteNotification? notification = message.notification;
     AndroidNotification? android = message.notification?.android;
     if (notification != null && android != null && !kIsWeb) {
+      print('listenfcm');
       try {
         // Hive Setup
         await Hive.initFlutter();
@@ -220,8 +212,6 @@ Future<void> listenFCM() async {
             channel.id,
             channel.name,
             channelDescription: channel.description,
-            // TODO add a proper drawable resource to android, for now using
-            //      one that already exists in example app.
             icon: '@drawable/logo',
           ),
         ),
