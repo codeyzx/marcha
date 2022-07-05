@@ -50,6 +50,8 @@ class _TopUpPageState extends State<TopUpPage> {
   }
 
   void initSDK() async {
+    print('initsdk');
+
     _midtrans = await MidtransSDK.init(
       config: MidtransConfig(
         clientKey: "SB-Mid-client-Jf7_deynf20wZtJq",
@@ -57,30 +59,35 @@ class _TopUpPageState extends State<TopUpPage> {
             "https://marcha-api-production.up.railway.app/notification_handler/",
       ),
     );
+    print('midtranssdk.init');
     _midtrans?.setUIKitCustomSetting(
       skipCustomerDetailsPages: true,
       showPaymentStatus: true,
     );
     _midtrans!.setTransactionFinishedCallback((result) async {
-      var prefix = amount.text.split('Rp')[1].trim();
-      var prefix2 = prefix.split('.');
-      var concatenate = StringBuffer();
+      if (!result.isTransactionCanceled) {
+        var prefix = amount.text.split('Rp')[1].trim();
+        var prefix2 = prefix.split('.');
+        var concatenate = StringBuffer();
 
-      for (var item in prefix2) {
-        concatenate.write(item);
+        for (var item in prefix2) {
+          concatenate.write(item);
+        }
+
+        await orders.doc().set({
+          "createdAt": DateTime.now(),
+          "orderId": result.orderId,
+          "customerId": _uid,
+          "status": "",
+          "amount": int.tryParse(concatenate.toString()),
+          "items": "Top Up ${amount.text}",
+        });
+
+        // Navigator.pushReplacementNamed(context, '/nav-bar');
       }
-
-      await orders.doc().set({
-        "createdAt": DateTime.now(),
-        "orderId": result.orderId,
-        "customerId": _uid,
-        "status": "",
-        "amount": int.tryParse(concatenate.toString()),
-        "items": "Top Up ${amount.text}",
-      });
-
-      Navigator.pushReplacementNamed(context, '/nav-bar');
     });
+
+    print('init ended');
   }
 
   @override
@@ -341,6 +348,9 @@ class _TopUpPageState extends State<TopUpPage> {
                                 final response = await api.post(
                                     "https://marcha-api-production.up.railway.app/charge",
                                     body);
+
+                                print('RESPONSE DARI TOPUP PAGE: $response');
+                                print('RESPONSE TOKEN: ${response['token']}');
 
                                 await _midtrans?.startPaymentUiFlow(
                                   token: response['token'],

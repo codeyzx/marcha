@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:marcha_branch/shared/theme.dart';
 
@@ -69,6 +70,15 @@ class _NotificationPageState extends State<NotificationPage> {
                     'Baru',
                     style: labelNotification,
                   ),
+                  TextButton(
+                    onPressed: () {
+                      box.clear();
+                    },
+                    child: Text(
+                      'Hapus Notifikasi',
+                      style: labelNotification,
+                    ),
+                  ),
                   SizedBox(
                     height: 12.h,
                   ),
@@ -83,65 +93,71 @@ class _NotificationPageState extends State<NotificationPage> {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10.r),
-                                            child: Image.network(
-                                              'https://user-images.githubusercontent.com/70552996/164889649-38092a1e-2bb7-46cf-bd37-8d916a9a6828.jpg',
-                                              width: 50.w,
-                                              height: 50.h,
-                                              fit: BoxFit.cover,
-                                            )),
-                                        SizedBox(
-                                          width: 10.w,
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10.h, horizontal: 10.w),
+                                  width: 1.sw,
+                                  height: 100.h,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: HexColor("#9D20FF")
+                                              .withOpacity(0.10),
+                                          blurRadius: 5,
+                                          spreadRadius: 0,
+                                          offset: Offset(2, 2),
                                         ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                SizedBox(
-                                                  width: 170.w,
-                                                  child: Align(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: FittedBox(
-                                                      fit: BoxFit.scaleDown,
-                                                      child: Text(
-                                                        currentItem["title"],
-                                                        // 'Ahmad Joni',
-                                                        style: nameNotification,
-                                                        textAlign:
-                                                            TextAlign.left,
+                                      ]),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  SizedBox(
+                                                    // width: 170.w,
+                                                    child: Align(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: FittedBox(
+                                                        fit: BoxFit.scaleDown,
+                                                        child: Text(
+                                                          currentItem["title"],
+                                                          // 'Ahmad Joni',
+                                                          style:
+                                                              nameNotification,
+                                                          textAlign:
+                                                              TextAlign.left,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                                width: 155.w,
-                                                child: Text(
-                                                  currentItem["body"],
-                                                  style: personPayment,
-                                                  textAlign: TextAlign.left,
-                                                  // overflow:
-                                                  //     TextOverflow.ellipsis,
-                                                )),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                  width: 300.w,
+                                                  child: Text(
+                                                    currentItem["body"],
+                                                    style: personPayment,
+                                                    textAlign: TextAlign.left,
+                                                    // overflow:
+                                                    //     TextOverflow.ellipsis,
+                                                  )),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 24.h,

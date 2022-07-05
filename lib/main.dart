@@ -43,8 +43,8 @@ Future<void> main() async {
 
   // FCM onBackground
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  // String? token = await FirebaseMessaging.instance.getToken();
 
+  // String? token = await FirebaseMessaging.instance.getToken();
   // print('INI TOKEN');
   // print(token);
 
