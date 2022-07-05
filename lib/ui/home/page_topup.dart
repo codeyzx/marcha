@@ -260,8 +260,8 @@ class _PageTopUpState extends State<PageTopUp> {
                                       "name": "Seblak Murah"
                                     }
                                   ],
-                                  "callbacks": {"url": "string"},
-                                  "order_id": orderId.toString(),
+                                  // "callbacks": {"url": "string"},
+                                  "order_id": orderId.toString()
                                 };
 
                                 var body = jsonEncode(data);

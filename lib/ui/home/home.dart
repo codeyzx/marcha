@@ -12,6 +12,7 @@ import 'package:marcha_branch/ui/groups/group_page.dart';
 import 'package:marcha_branch/ui/history/history_page.dart';
 import 'package:marcha_branch/ui/home/notification_page.dart';
 import 'package:marcha_branch/ui/home/page_topup.dart';
+import 'package:marcha_branch/ui/home/topup_page.dart';
 import 'package:marcha_branch/ui/request/request_page.dart';
 import 'package:marcha_branch/ui/send/send_page.dart';
 import 'package:marcha_branch/ui/split_bill/splitBill_page.dart';
@@ -366,9 +367,19 @@ class _HomePageState extends State<HomePage> {
                                                             Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            PageTopUp()
+                                                                    builder: (context) =>
+                                                                        // PageTopUp()
+                                                                        TopUpPage(
+                                                                          email: state
+                                                                              .user
+                                                                              .email,
+                                                                          uid: state
+                                                                              .user
+                                                                              .id,
+                                                                          name: state
+                                                                              .user
+                                                                              .name,
+                                                                        )
                                                                     // DevelopmentPage(),
                                                                     ));
                                                             print(
