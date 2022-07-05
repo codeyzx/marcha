@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                             .snapshots(),
                         builder: (_, snapshot) {
                           if (snapshot.hasData) {
-                            print('SNAPSHOT CENAH');
+                            //print('SNAPSHOT CENAH');
                             if (snapshot.data!.docs.isNotEmpty) {
                               var okedek = snapshot.data!.docs.length;
 
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                             .snapshots(),
                         builder: (_, snapshot) {
                           if (snapshot.hasData) {
-                            print('SNAPSHOT CENAH');
+                            //print('SNAPSHOT CENAH');
                             if (snapshot.data!.docs.isNotEmpty) {
                               var okedek = snapshot.data!.docs.length;
 
@@ -2242,7 +2242,7 @@ class _HomePageState extends State<HomePage> {
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  print('INI STATE: $state');
+                  // print('INI STATE: $state');
                   return Center(
                     child: CircularProgressIndicator(),
                   );

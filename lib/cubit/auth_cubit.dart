@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:marcha_branch/models/user_model.dart';
 import 'package:marcha_branch/services/auth_service.dart';
@@ -88,68 +87,76 @@ class AuthCubit extends Cubit<AuthState> {
   //   }
   // }
 
-  Future<bool> autoLogin() async {
-    try {
-      emit(AuthLoading());
-      debugPrint('MASUK AUTO LOGIN');
-      final isSignIn = await _googleSignIn.isSignedIn();
-      User? user = FirebaseAuth.instance.currentUser;
-      UserModel users = await UserService().getUserById(user!.uid);
-      emit(AuthSuccess(users));
-      if (isSignIn) {
-        return true;
-      } else {
-        // print(isSignIn);
-        return false;
-      }
-    } catch (e) {
-      emit(AuthFailed(e.toString()));
-    }
-    try {
-      print('MASUK AUTO LOGIN');
-      final isSignIn = await _googleSignIn.isSignedIn();
-      User? user = FirebaseAuth.instance.currentUser;
-      AuthCubit().getCurrentUser(user!.uid);
+  // Future<bool> autoLogin() async {
+  //   try {
+  //     emit(AuthLoading());
 
-      if (isSignIn) {
-        // print(isSignIn);
-        // print('MASUK IS SIGN');
-        // print('================UID : ');
-        // print(user.uid);
-        // print('================LAST SIGN IN : ');
-        // print(
-        //   user.metadata.lastSignInTime!.toIso8601String(),
-        // );
-        // await _userReference.doc(user.uid).update({
-        //   'lastSignInTime':
-        //       // userCredential!.user!.metadata.lastSignInTime!.toIso8601String(),
-        //       user.metadata.lastSignInTime!.toIso8601String(),
-        // });
-        // final listChats =
-        //     await _userReference.doc(user.uid).collection('chats').get();
-        // if (listChats.docs.isNotEmpty) {
-        //   List<ChatUser> dataListChats = [];
-        //   for (var element in listChats.docs) {
-        //     print(element.data());
-        //     var dataDocChat = element.data();
-        //     var dataDocChatId = element.id;
-        //     dataListChats.add(ChatUser(
-        //         connection: dataDocChat['connection'],
-        //         chatId: dataDocChatId,
-        //         lastTime: dataDocChat['lastTime'],
-        //         totalUnread: dataDocChat['totalUnread']));
-        //   }
-        // }
-        return true;
-      } else {
-        // print(isSignIn);
-        return false;
-      }
-    } catch (e) {
-      // print(e);
-      return false;
-    }
-  }
+  //     debugPrint('MASUK AUTO LOGIN');
+
+  //     final isSignIn = await _googleSignIn.isSignedIn();
+
+  //     User? user = FirebaseAuth.instance.currentUser;
+
+  //     UserModel users = await UserService().getUserById(user!.uid);
+
+  //     emit(AuthSuccess(users));
+      
+  //     if (isSignIn) {
+  //       return true;
+  //     } else {
+  //       // print(isSignIn);
+  //       return false;
+  //     }
+  //   } catch (e) {
+  //     emit(AuthFailed(e.toString()));
+  //     return false;
+  //   }
+
+  //   // try {
+  //   //   print('MASUK AUTO LOGIN');
+  //   //   final isSignIn = await _googleSignIn.isSignedIn();
+  //   //   User? user = FirebaseAuth.instance.currentUser;
+  //   //   AuthCubit().getCurrentUser(user!.uid);
+
+  //   //   // if (isSignIn) {
+  //   //   //   // print(isSignIn);
+  //   //   //   // print('MASUK IS SIGN');
+  //   //   //   // print('================UID : ');
+  //   //   //   // print(user.uid);
+  //   //   //   // print('================LAST SIGN IN : ');
+  //   //   //   // print(
+  //   //   //   //   user.metadata.lastSignInTime!.toIso8601String(),
+  //   //   //   // );
+  //   //   //   // await _userReference.doc(user.uid).update({
+  //   //   //   //   'lastSignInTime':
+  //   //   //   //       // userCredential!.user!.metadata.lastSignInTime!.toIso8601String(),
+  //   //   //   //       user.metadata.lastSignInTime!.toIso8601String(),
+  //   //   //   // });
+  //   //   //   // final listChats =
+  //   //   //   //     await _userReference.doc(user.uid).collection('chats').get();
+  //   //   //   // if (listChats.docs.isNotEmpty) {
+  //   //   //   //   List<ChatUser> dataListChats = [];
+  //   //   //   //   for (var element in listChats.docs) {
+  //   //   //   //     print(element.data());
+  //   //   //   //     var dataDocChat = element.data();
+  //   //   //   //     var dataDocChatId = element.id;
+  //   //   //   //     dataListChats.add(ChatUser(
+  //   //   //   //         connection: dataDocChat['connection'],
+  //   //   //   //         chatId: dataDocChatId,
+  //   //   //   //         lastTime: dataDocChat['lastTime'],
+  //   //   //   //         totalUnread: dataDocChat['totalUnread']));
+  //   //   //   //   }
+  //   //   //   // }
+  //   //   //   return true;
+  //   //   // } else {
+  //   //   //   // print(isSignIn);
+  //   //   //   return false;
+  //   //   // }
+  //   // } catch (e) {
+  //   //   // print(e);
+  //   //   return false;
+  //   // }
+  // }
 
   void signIn({required String email, required String password}) async {
     try {

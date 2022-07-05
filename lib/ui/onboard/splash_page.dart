@@ -19,18 +19,31 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     Timer(Duration(seconds: 3), () {
       User? user = FirebaseAuth.instance.currentUser;
-      context.read<AuthCubit>().autoLogin();
 
       if (user == null) {
         Navigator.pushNamedAndRemoveUntil(
             context, '/sign-in', (route) => false);
       } else {
         context.read<AuthCubit>().getCurrentUser(user.uid);
-        print('=============== INI USER: $user');
+        // print('=============== INI USER: $user');
         Navigator.pushNamedAndRemoveUntil(
             context, '/nav-bar', (route) => false);
       }
     });
+    // Timer(Duration(seconds: 3), () {
+    //   User? user = FirebaseAuth.instance.currentUser;
+    //   context.read<AuthCubit>().autoLogin();
+
+    //   if (user == null) {
+    //     Navigator.pushNamedAndRemoveUntil(
+    //         context, '/sign-in', (route) => false);
+    //   } else {
+    //     context.read<AuthCubit>().getCurrentUser(user.uid);
+    //     print('=============== INI USER: $user');
+    //     Navigator.pushNamedAndRemoveUntil(
+    //         context, '/nav-bar', (route) => false);
+    //   }
+    // });
     super.initState();
   }
 
@@ -46,19 +59,38 @@ class _SplashPageState extends State<SplashPage> {
             Center(
               child: Column(
                 children: [
-                  Image.asset('assets/images/logo-marcha-img.png', width: 101.67.w, height: 80.h,),
-                  SizedBox(height: 10.h,),
-                  Text('MARCHA', style: titleSplashh,),
+                  Image.asset(
+                    'assets/images/logo-marcha-img.png',
+                    width: 101.67.w,
+                    height: 80.h,
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text(
+                    'MARCHA',
+                    style: titleSplashh,
+                  ),
                 ],
               ),
             ),
             Spacer(),
             Column(
               children: [
-                Text('By', style: bySplash,),
-                SizedBox(height: 5.h,),
-                Text('ORBIT', style: orbitSplash,),
-                SizedBox(height: 35.h,),
+                Text(
+                  'By',
+                  style: bySplash,
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(
+                  'ORBIT',
+                  style: orbitSplash,
+                ),
+                SizedBox(
+                  height: 35.h,
+                ),
               ],
             ),
           ],

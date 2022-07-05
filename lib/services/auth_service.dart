@@ -126,16 +126,45 @@ class AuthService {
     await _auth.signOut();
   }
 
+  Future updateDeviceToken(String userDoc, String token) async {
+    WriteBatch batch = FirebaseFirestore.instance.batch();
+
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(userDoc)
+        .collection('friends')
+        .where('deviceToken', isNotEqualTo: token)
+        .get()
+        .then((querySnapshot) {
+      for (var document in querySnapshot.docs) {
+        try {
+          // Only if DocumentID has only numbers
+          batch.update(document.reference, {"deviceToken": token});
+
+          // if (cart.contains(document.id)) {
+          //   batch.update(document.reference, {"deviceToken": token});
+          // }
+        } on FormatException catch (error) {
+          // If a document ID is unparsable. Example "lRt931gu83iukSSLwyei" is unparsable.
+          print("The document ${error.source} could not be parsed.");
+          continue;
+        }
+      }
+      return batch.commit();
+    });
+  }
+
   Future<UserModel> googleLogin() async {
     try {
+      print('masuk google login');
       await _googleSignIn.signOut();
       await _googleSignIn.signIn().then((value) => _currentUser = value);
 
       final isSignIn = await _googleSignIn.isSignedIn();
       print('APAKAH SUDAH LOGIN? ($isSignIn)');
 
-      print('SUDAH BERHASIL LOGIN DENGAN AKUN: ');
-      print(_currentUser);
+      // print('SUDAH BERHASIL LOGIN DENGAN AKUN: ');
+      // print(_currentUser);
 
       final googleAuth = await _currentUser!.authentication;
 
@@ -150,20 +179,23 @@ class AuthService {
 
       String? token = await FirebaseMessaging.instance.getToken();
 
-      print('USER CREDENTIAL:');
-      print(userCredential);
+      // print('USER CREDENTIAL:');
+      // print(userCredential);
 
       CollectionReference _userReference =
           FirebaseFirestore.instance.collection('users');
 
-      print('NGEPRINT UID: ' + userCredential!.user!.uid);
+      // print('NGEPRINT UID: ' + userCredential!.user!.uid);
       final checkUser =
           await _userReference.doc(userCredential!.user!.uid).get();
 
-      print('CHECK USER DATA UTK NGESET:');
-      print(checkUser.data());
+      Map<String, dynamic>? data = checkUser.data()! as Map<String, dynamic>?;
+
+      // print('CHECK USER DATA UTK NGESET:');
+      // print(data!['deviceToken']);
+      // print(checkUser.data());
+      // print('user data: ${checkUser.data()}');
       if (checkUser.data() == null) {
-        print('USER DATA IS TRUE, AKAN SET DOCUMENT:');
         _userReference.doc(userCredential!.user!.uid).set({
           'id': userCredential!.user!.uid,
           'balance': 0,
@@ -178,16 +210,42 @@ class AuthService {
           'updatedTime': DateTime.now().toIso8601String(),
           'deviceToken': token,
           'pin': 0,
-          // 'chats': []
         });
-        _userReference.doc(userCredential!.user!.uid).collection('chats');
       } else {
-        print('USER DATA IS FALSE:');
-        _userReference.doc(userCredential!.user!.uid).update({
-          'lastSignInTime':
-              userCredential!.user!.metadata.lastSignInTime!.toIso8601String(),
-        });
+        if (data!['deviceToken'] != token || data.length < 11) {
+          updateDeviceToken(userCredential!.user!.uid, token!);
+
+          _userReference.doc(userCredential!.user!.uid).update({
+            'deviceToken': token,
+          });
+        }
       }
+      // print('USER DATA IS TRUE, AKAN SET DOCUMENT:');
+      // _userReference.doc(userCredential!.user!.uid).set({
+      //   'id': userCredential!.user!.uid,
+      //   'balance': 0,
+      //   'name': _currentUser!.displayName,
+      //   'email': _currentUser!.email,
+      //   'photo': _currentUser!.photoUrl,
+      //   'status': '',
+      //   'creationTime':
+      //       userCredential!.user!.metadata.creationTime!.toIso8601String(),
+      //   'lastSignInTime':
+      //       userCredential!.user!.metadata.lastSignInTime!.toIso8601String(),
+      //   'updatedTime': DateTime.now().toIso8601String(),
+      //   'deviceToken': token,
+      //   'pin': 0,
+      //   // 'chats': []
+      // });
+      // _userReference.doc(userCredential!.user!.uid).collection('chats');
+
+      // else {
+      //   // print('USER DATA IS FALSE:');
+      //   _userReference.doc(userCredential!.user!.uid).update({
+      //     'lastSignInTime':
+      //         userCredential!.user!.metadata.lastSignInTime!.toIso8601String(),
+      //   });
+      // }
 
       // final listChats = await _userReference
       //     .doc(userCredential!.user!.uid)
@@ -211,9 +269,9 @@ class AuthService {
           await UserService().getUserById(userCredential!.user!.uid);
       // UserModel user = await UserService().getUserById(_currentUser!.id);
 
-      print('CREDENTIAL: N$userCredential');
-      print('CURRENT USER: N $_currentUser');
-      print('USER: \n ${user.pin}');
+      // print('CREDENTIAL: N$userCredential');
+      // print('CURRENT USER: N $_currentUser');
+      // print('USER: \n ${user.pin}');
 
       return user;
     } catch (e) {

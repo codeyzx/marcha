@@ -71,7 +71,7 @@ class ListFriends extends StatelessWidget {
                             .snapshots(),
                         builder: (_, snapshot) {
                           if (snapshot.hasData) {
-                            print('SNAPSHOT CENAH');
+                            //print('SNAPSHOT CENAH');
                             if (snapshot.data!.docs.isNotEmpty) {
                               var okedek = snapshot.data!.docs.length;
 
@@ -102,7 +102,7 @@ class ListFriends extends StatelessWidget {
                             .snapshots(),
                         builder: (_, snapshot) {
                           if (snapshot.hasData) {
-                            print('SNAPSHOT CENAH');
+                            //print('SNAPSHOT CENAH');
                             if (snapshot.data!.docs.isNotEmpty) {
                               var okedek = snapshot.data!.docs.length;
 
