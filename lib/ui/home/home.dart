@@ -366,19 +366,13 @@ class _HomePageState extends State<HomePage> {
                                                             Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
-                                                                    builder: (context) =>
-                                                                        // PageTopUp()
-                                                                        TopUpPage(
-                                                                          email: state
-                                                                              .user
-                                                                              .email,
-                                                                          uid: state
-                                                                              .user
-                                                                              .id,
-                                                                          name: state
-                                                                              .user
-                                                                              .name,
-                                                                        )
+                                                                    builder:
+                                                                        (context) =>
+                                                                            TopUpPage(
+                                                                              email: state.user.email,
+                                                                              uid: state.user.id,
+                                                                              name: state.user.name,
+                                                                            )
                                                                     // DevelopmentPage(),
                                                                     ));
                                                             print(
