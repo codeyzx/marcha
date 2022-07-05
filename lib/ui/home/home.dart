@@ -7,11 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
-import 'package:marcha_branch/ui/else/development_page.dart';
 import 'package:marcha_branch/ui/friends/friends_page.dart';
 import 'package:marcha_branch/ui/groups/group_page.dart';
 import 'package:marcha_branch/ui/history/history_page.dart';
 import 'package:marcha_branch/ui/home/notification_page.dart';
+import 'package:marcha_branch/ui/home/topup_page.dart';
 import 'package:marcha_branch/ui/request/request_page.dart';
 import 'package:marcha_branch/ui/send/send_page.dart';
 import 'package:marcha_branch/ui/split_bill/splitBill_page.dart';
@@ -191,9 +191,9 @@ class _HomePageState extends State<HomePage> {
                                                         Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  NotificationPage(),
-                                                            ));
+                                                                builder:
+                                                                    (context) =>
+                                                                        NotificationPage()));
                                                       },
                                                       icon: Container(
                                                         width: 35.w,
@@ -366,10 +366,21 @@ class _HomePageState extends State<HomePage> {
                                                             Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          DevelopmentPage(),
-                                                                ));
+                                                                    builder: (context) =>
+                                                                        // PageTopUp()
+                                                                        TopUpPage(
+                                                                          email: state
+                                                                              .user
+                                                                              .email,
+                                                                          uid: state
+                                                                              .user
+                                                                              .id,
+                                                                          name: state
+                                                                              .user
+                                                                              .name,
+                                                                        )
+                                                                    // DevelopmentPage(),
+                                                                    ));
                                                             print(
                                                                 "tapped TopUp");
                                                           },
@@ -432,6 +443,7 @@ class _HomePageState extends State<HomePage> {
                           }
                         },
                       ),
+
                       Padding(
                         padding: EdgeInsets.only(left: 20.w, right: 20.w),
                         child: Column(

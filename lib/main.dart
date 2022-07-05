@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/cubit/page_cubit.dart';
 import 'package:marcha_branch/ui/botnavbar.dart';
@@ -27,21 +28,23 @@ late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // await Firebase.initializeApp();
+  // Hive Setup
+  await Hive.initFlutter();
+  // Hive.registerAdapter(NotificationTransactionAdapter());
+  await Hive.openBox('notif');
 
-  // // await requestPermission();
-
+  // Firestore Setup
   await Firebase.initializeApp(
       options: FirebaseOptions(
           apiKey: "AIzaSyDKyW4hEbNdrdADXREuBgjTFsRptivD9Xo",
-          // "AAAA9XZ2bVE:APA91bGXuEwzcU9ncfQhipfeijm2G6bc74Mh8WElbqOYqZPcs8x-Wtf7C8VVCJC16PLvUglmZpAlENGn8dpfif2fEnfriHjX6fO4yrU1yyZeuZWxlbskG6HEjDElW4fbm71cthGojobw",
           appId: "1:1054254460241:android:0c2c84eed318e5268cb770",
           messagingSenderId: "1054254460241",
           projectId: "marcha-branch"));
 
+  // FCM onBackground
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  // String? token = await FirebaseMessaging.instance.getToken();
 
+  // String? token = await FirebaseMessaging.instance.getToken();
   // print('INI TOKEN');
   // print(token);
 
@@ -128,9 +131,28 @@ Future<void> requestPermission() async {
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
+  // Hive Operation
+  try {
+    // Hive Setup
+    await Hive.initFlutter();
+    // Hive.registerAdapter(NotificationTransactionAdapter());
+    await Hive.openBox('notif');
 
-  print("Handling a background message: ${message.messageId}");
-  print(message.toMap());
+    // Hive Operation
+    // final notification = NotificationTransaction()
+    //   ..title = message.data['title']
+    //   ..body = message.data['body'];
+    final box = Hive.box('notif');
+    await box.add({
+      'title': message.data['title'],
+      'body': message.data['body'],
+    });
+  } catch (e) {
+    print(e);
+  }
+
+  // print("Handling a background message: ${message.messageId}");
+  // print(message.data);
 }
 
 Future<void> loadFCM() async {
@@ -167,10 +189,28 @@ Future<void> loadFCM() async {
 }
 
 Future<void> listenFCM() async {
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
     RemoteNotification? notification = message.notification;
     AndroidNotification? android = message.notification?.android;
     if (notification != null && android != null && !kIsWeb) {
+      try {
+        // Hive Setup
+        await Hive.initFlutter();
+        // Hive.registerAdapter(NotificationTransactionAdapter());
+        await Hive.openBox('notif');
+
+        // Hive Operation
+        // final notification = NotificationTransaction()
+        //   ..title = message.data['title']
+        //   ..body = message.data['body'];
+        final box = Hive.box('notif');
+        await box.add({
+          'title': message.data['title'],
+          'body': message.data['body'],
+        });
+      } catch (e) {
+        print(e);
+      }
       flutterLocalNotificationsPlugin.show(
         notification.hashCode,
         notification.title,
@@ -182,7 +222,7 @@ Future<void> listenFCM() async {
             channelDescription: channel.description,
             // TODO add a proper drawable resource to android, for now using
             //      one that already exists in example app.
-            icon: 'launch_background',
+            icon: '@drawable/logo',
           ),
         ),
       );

@@ -1,430 +1,384 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/api/api_base_helper.dart';
-import 'package:marcha_branch/api/api_response.dart';
-import 'package:marcha_branch/cubit/topup_bloc.dart';
-import 'package:marcha_branch/models/topup.dart';
+import 'package:marcha_branch/shared/theme.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marcha_branch/ui/history/history_page.dart';
+import 'package:midtrans_sdk/midtrans_sdk.dart';
 
-class TopUpHalaman extends StatefulWidget {
-  const TopUpHalaman({Key? key}) : super(key: key);
+class TopUpPage extends StatefulWidget {
+  final String uid;
+  final String email;
+  final String name;
+  const TopUpPage(
+      {Key? key, required this.uid, required this.email, required this.name})
+      : super(key: key);
 
   @override
-  TopUpState createState() => TopUpState();
+  // ignore: no_logic_in_create_state
+  State<TopUpPage> createState() => _TopUpPageState(uid, email, name);
 }
 
-class TopUpState extends State<TopUpHalaman> {
-  late TopUpBloc bloc;
+class _TopUpPageState extends State<TopUpPage> {
+  final String _uid;
+  final String _email;
+  final String _name;
+
+  CollectionReference orders = FirebaseFirestore.instance.collection('orders');
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  TextEditingController amount = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
+  ApiBaseHelper api = ApiBaseHelper();
+  MidtransSDK? _midtrans;
+
+  _TopUpPageState(this._uid, this._email, this._name);
+
   @override
   void initState() {
     super.initState();
-    bloc = TopUpBloc();
+    initSDK();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("TopUp"),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(2.0),
-        child: RefreshIndicator(
-          onRefresh: () => bloc.fetchList(),
-          child: StreamBuilder<ApiResponse<List<TopUp>>>(
-            stream: bloc.listStream,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                switch (snapshot.data!.status) {
-                  case Status.LOADING:
-                    return Text(snapshot.data!.message,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis);
-                    break;
-                  case Status.COMPLETED:
-                    // return TopUpList(list: snapshot.data!.data);
-                    // return TopUpDetail(id: 99, harga: 25000);
-                    return TopUpDua();
-                    break;
-                  case Status.ERROR:
-                    return InkWell(
-                      child: Text(snapshot.data!.message),
-                      onTap: () {
-                        bloc.fetchList();
-                      },
-                    );
-                    break;
-                }
-              }
-              return Container();
-            },
-          ),
-        ),
+  void initSDK() async {
+    print('initsdk');
+
+    _midtrans = await MidtransSDK.init(
+      config: MidtransConfig(
+        clientKey: "SB-Mid-client-Jf7_deynf20wZtJq",
+        merchantBaseUrl:
+            "https://marcha-api-production.up.railway.app/notification_handler/",
       ),
     );
-  }
-}
-
-//LIST TopUp
-// class TopUpList extends StatelessWidget {
-//   final List<TopUp> list;
-
-//   const TopUpList({Key? key, required this.list}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       primary: true,
-//       shrinkWrap: true,
-//       scrollDirection: Axis.vertical,
-//       itemCount: list.isEmpty ? 0 : list.length,
-//       itemBuilder: (context, index) {
-//         return Padding(
-//           padding: const EdgeInsets.all(3.0),
-//           child: Card(
-//               elevation: 3.0,
-//               shape: RoundedRectangleBorder(
-//                   borderRadius: BorderRadius.circular(5.0)),
-//               child: InkWell(
-//                   onTap: () {
-//                     Navigator.of(context).push(MaterialPageRoute<Null>(
-//                         builder: (BuildContext context) {
-//                           return TopUpDetail(
-//                             id: list[index].id,
-//                             harga: list[index].harga,
-//                           );
-//                         },
-//                         fullscreenDialog: true));
-//                   },
-//                   child: ListTile(
-//                     leading: Image(image: AssetImage("assets/images/logo.png")),
-//                     subtitle: Text(list[index].harga.toString()),
-//                     trailing: Icon(Icons.add_shopping_cart),
-//                   ))),
-//         );
-//       },
-//     );
-//   }
-// }
-
-//DETAIL TopUp
-class TopUpDetail extends StatelessWidget {
-  TopUpDetail({key, required this.id, required this.harga}) : super(key: key);
-
-  ApiBaseHelper api = ApiBaseHelper();
-  final _formKey = GlobalKey<FormState>();
-
-  final int id;
-  final int harga;
-  String nama = "";
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('TOP UP'),
-      ),
-      body: Form(
-        key: _formKey,
-        child: Container(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              // tambahkan komponen seperti input field disini
-              TextFormField(
-                initialValue: id.toString(),
-                readOnly: true,
-                decoration: InputDecoration(
-                    labelText: "ID Paket", icon: Icon(Icons.tag)),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'ID Paket tidak boleh kosong';
-                  }
-                  return null;
-                },
-              ),
-
-              TextFormField(
-                initialValue: harga.toString(),
-                readOnly: true,
-                decoration: InputDecoration(
-                    labelText: "Harga Paket", icon: Icon(Icons.attach_money)),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Harga Paket tidak boleh kosong';
-                  }
-                  return null;
-                },
-              ),
-
-              TextFormField(
-                onSaved: (String? value) {
-                  nama = value!;
-                },
-                decoration: InputDecoration(
-                    hintText: "Masukan Nama Lengkap Anda",
-                    labelText: "Nama Lengkap",
-                    icon: Icon(Icons.people)),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Nama tidak boleh kosong';
-                  }
-                  return null;
-                },
-              ),
-
-              RaisedButton(
-                child: Text(
-                  "Order",
-                  style: TextStyle(color: Colors.white),
-                ),
-                color: Colors.blue,
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    var orderId = DateTime.now().millisecondsSinceEpoch;
-                    Map data = {
-                      "payment_type": "bank_transfer",
-                      "bank_transfer": {"bank": "permata"},
-                      "transaction_details": {
-                        "order_id": orderId.toString(),
-                        "gross_amount": harga
-                      },
-                      "tiket_id": id,
-                      "nama": nama
-                    };
-                    var body = json.encode(data);
-                    final response = await api.post(
-                        "https://marcha-api-test-production.up.railway.app/order/charge",
-                        body);
-
-                    Navigator.of(context).push(MaterialPageRoute<void>(
-                        builder: (BuildContext context) {
-                          return orderDetail(hasil: response.toString());
-                        },
-                        fullscreenDialog: true));
-                  }
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+    print('midtranssdk.init');
+    _midtrans?.setUIKitCustomSetting(
+      skipCustomerDetailsPages: true,
+      showPaymentStatus: true,
     );
-  }
-}
+    _midtrans!.setTransactionFinishedCallback((result) async {
+      if (!result.isTransactionCanceled) {
+        var prefix = amount.text.split('Rp')[1].trim();
+        var prefix2 = prefix.split('.');
+        var concatenate = StringBuffer();
 
-//TOP UP 2
-class TopUpDua extends StatefulWidget {
-  const TopUpDua({Key? key}) : super(key: key);
+        for (var item in prefix2) {
+          concatenate.write(item);
+        }
+
+        await orders.doc().set({
+          "createdAt": DateTime.now(),
+          "orderId": result.orderId,
+          "customerId": _uid,
+          "status": "",
+          "amount": int.tryParse(concatenate.toString()),
+          "items": "Top Up ${amount.text}",
+        });
+
+        // Navigator.pushReplacementNamed(context, '/nav-bar');
+      }
+    });
+
+    print('init ended');
+  }
 
   @override
-  State<TopUpDua> createState() => _TopUpDuaState();
-}
+  void dispose() {
+    _midtrans?.removeTransactionFinishedCallback();
+    super.dispose();
+  }
 
-class _TopUpDuaState extends State<TopUpDua> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            color: Colors.white,
-            padding: EdgeInsets.symmetric(
-              horizontal: 24,
-              vertical: 16,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          "Top Up",
+          style: titleEdit,
+        ),
+        centerTitle: false,
+      ),
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Deliver to:', style: TextStyle(color: Colors.black)),
-                SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text('Name', style: TextStyle(color: Colors.grey)),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text(
-                        'widget.transaction.user.name',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ],
+                Text(
+                  'History Top Up',
+                  style: subTitleFriend,
                 ),
-                SizedBox(height: 6),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text('Phone No.',
-                          style: TextStyle(color: Colors.grey)),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text(
-                        '+6285624918683',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 6),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child:
-                          Text('Address', style: TextStyle(color: Colors.grey)),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text(
-                        'widget.transaction.user.address',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 6),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text('House No.',
-                          style: TextStyle(color: Colors.grey)),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text(
-                        'widget.transaction.user.houseNumber',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 6),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text('City', style: TextStyle(color: Colors.grey)),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 24,
-                      child: Text(
-                        'widget.transaction.user.city',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ],
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HistoryPage(),
+                        ));
+                  },
+                  child: Text(
+                    "See all",
+                    style: addText,
+                  ),
                 ),
               ],
             ),
-          ),
-          // * Checkout Button
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(24),
-            child: SizedBox(
-              width: double.infinity,
-              height: 45,
-              child: RaisedButton(
-                elevation: 0,
-                focusElevation: 0,
-                highlightElevation: 0,
-                hoverElevation: 0,
-                child: Text(
-                  'Checkout Now',
-                  style: TextStyle(color: Colors.black).copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
+            SizedBox(
+              height: 14.h,
+            ),
+            StreamBuilder<QuerySnapshot>(
+              stream: orders.where('customerId', isEqualTo: _uid).snapshots(),
+              builder: (_, snapshot) {
+                if (snapshot.hasData) {
+                  return Column(
+                    children: (snapshot.data!)
+                        .docs
+                        .map(
+                          (e) => Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 10.w),
+                                width: 1.sw,
+                                height: 70.h,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: HexColor("#9D20FF")
+                                            .withOpacity(0.10),
+                                        blurRadius: 5,
+                                        spreadRadius: 0,
+                                        offset: Offset(2, 2),
+                                      ),
+                                    ]),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              width: 127.w,
+                                              child: Text(
+                                                e['orderId'],
+                                                style: GoogleFonts.poppins(
+                                                  fontSize: 13,
+                                                ),
+                                                // "Vladimir Putin",
+                                                // style: titleName,
+                                                // maxLines: 1,
+                                                // overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                            Text(
+                                              formatDate(
+                                                  e['createdAt'].toDate(), [
+                                                dd,
+                                                ' ',
+                                                MM,
+                                                ',  ',
+                                                // yyyy
+                                                HH,
+                                                ':',
+                                                nn
+                                              ]),
+                                              // "17 Feb, 13:30",
+                                              style: timeHome,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      // "Rp -${e['amount']}",
+                                      e['status'],
+                                      style: moneyActivity,
+                                    ),
+                                    Text(
+                                      // "Rp -${e['amount']}",
+                                      "+ ${convertToIdr(e['amount'])}",
+                                      style: moneyActivity,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // SizedBox(
+                              //   height: 10.h,
+                              // ),
+                            ],
+                          ),
+                        )
+                        .toList(),
+                  );
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Jumlah Top Up",
+                      style: labelEdit,
+                    ),
+                    TextFormField(
+                      controller: amount,
+                      keyboardType: TextInputType.number,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        CurrencyTextInputFormatter(
+                          locale: 'id',
+                          symbol: 'Rp ',
+                          decimalDigits: 0,
+                        )
+                      ],
+                      validator: (value) {
+                        print(value);
+                        if (value!.isEmpty) {
+                          return 'Amount should be filled';
+                        } else if (value == 'Rp 0') {
+                          return 'Amount minimum Rp 1';
+                        } else {
+                          return null;
+                        }
+                      },
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor('#E5E5E5'),
+                            width: 1.w,
+                          ),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor('#E5E5E5'),
+                            width: 1.w,
+                          ),
+                        ),
+                      ),
+                      style: inputEdit,
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.r),
+                        child: SizedBox(
+                          width: 1.sw,
+                          height: 55.h,
+                          child: TextButton(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+
+                                var prefix = amount.text.split('Rp')[1].trim();
+                                var prefix2 = prefix.split('.');
+                                var concatenate = StringBuffer();
+
+                                for (var item in prefix2) {
+                                  concatenate.write(item);
+                                }
+
+                                var orderId =
+                                    DateTime.now().millisecondsSinceEpoch;
+
+                                Map<String, dynamic> data = {
+                                  "customers": {
+                                    "email": _email,
+                                    "first_name": _name,
+                                    "last_name": '',
+                                    "phone": 'phone.text'
+                                  },
+                                  "items": [
+                                    {
+                                      "id": "topupcustom",
+                                      "price":
+                                          int.tryParse(concatenate.toString()),
+                                      "quantity": 1,
+                                      "name": "Top Up ${amount.text}"
+                                    }
+                                  ],
+                                  // "callbacks": {"url": "string"},
+                                  "order_id": orderId.toString()
+                                };
+
+                                var body = jsonEncode(data);
+
+                                final response = await api.post(
+                                    "https://marcha-api-production.up.railway.app/charge",
+                                    body);
+
+                                print('RESPONSE DARI TOPUP PAGE: $response');
+                                print('RESPONSE TOKEN: ${response['token']}');
+
+                                await _midtrans?.startPaymentUiFlow(
+                                  token: response['token'],
+                                );
+                              }
+                            },
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(buttonMain),
+                            ),
+                            child: Text(
+                              'Top Up',
+                              style: textButton,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                  ],
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                onPressed: () async {
-                  // setState(() {
-                  //   isLoading = true;
-                  // });
-
-                  // String paymentURL = await context
-                  //     .read<TransactionCubit>()
-                  //     .submitTransaction(widget.transaction.copyWith(
-                  //         dateTime: DateTime.now(),
-                  //         total: widget.transaction.total +
-                  //             (widget.transaction.total * 0.1).toInt() +
-                  //             50000));
-
-                  // if (paymentURL != null) {
-                  //   Get.to(PaymentMethodPage(paymentURL));
-                  // } else {
-                  //   Get.snackbar(
-                  //     '',
-                  //     '',
-                  //     backgroundColor: 'D9435E'.toColor(),
-                  //     icon: Icon(MdiIcons.closeCircleOutline,
-                  //         color: Colors.white),
-                  //     titleText: Text(
-                  //       'Transaction Failed',
-                  //       style: GoogleFonts.poppins(
-                  //         color: Colors.white,
-                  //         fontWeight: FontWeight.w500,
-                  //       ),
-                  //     ),
-                  //     messageText: Text(
-                  //       'Please try again later.',
-                  //       style: GoogleFonts.poppins(color: Colors.white),
-                  //     ),
-                  //   );
-
-                  //   setState(() {
-                  //     isLoading = false;
-                  //   });
-                  // }
-                },
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
-  }
-}
-
-//HASIL ORDER
-class orderDetail extends StatelessWidget {
-  const orderDetail({key, required this.hasil}) : super(key: key);
-
-  final String hasil;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Hasil Order"),
-        ),
-        body: SingleChildScrollView(
-          child: SizedBox(
-            child: Text(hasil),
-          ),
-        ));
   }
 }

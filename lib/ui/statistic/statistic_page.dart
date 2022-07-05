@@ -103,6 +103,19 @@ class _StatisticPageState extends State<StatisticPage> {
                                   xValueMapper: (_ChartData data, _) => data.x,
                                   yValueMapper: (_ChartData data, _) =>
                                       data.y1),
+                              // ColumnSeries<_ChartData, String>(
+                              //     name: 'Pemasukan',
+                              //     xAxisName: 'SADASD',
+                              //     dataSource: data,
+                              //     xValueMapper: (_ChartData data, _) => data.x,
+                              //     yValueMapper: (_ChartData data, _) => data.y),
+                              // ColumnSeries<_ChartData, String>(
+                              //     name: 'Pengeluaran',
+                              //     xAxisName: 'SADASD',
+                              //     dataSource: data,
+                              //     xValueMapper: (_ChartData data, _) => data.x,
+                              //     yValueMapper: (_ChartData data, _) =>
+                              //         data.y1),
                             ]),
                       ),
                       SizedBox(
