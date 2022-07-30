@@ -54,54 +54,53 @@ flutter run
 
 * Onboarding
 
-![](assets/images/onboard.jpg)
-<img src="assets/images/onboard.jpg" alt="" data-canonical-src="" width="200" height="400" />
+<img src="assets/images/onboard.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Login
 
-![Login](assets/images/login.jpg | width=100)
+<img src="assets/images/login.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Home Page
 
-![Home](assets/images/homepage.jpg#100)
+<img src="assets/images/homepage.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Send
 
-![Send](assets/images/send.jpg#100)
+<img src="assets/images/send.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Request
 
-![Request](assets/images/request.jpg#100)
+<img src="assets/images/request.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Split Bill
 
-![Split](assets/images/splitbill.jpg#100)
+<img src="assets/images/splitbill.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Group
 
-![Group](assets/images/group.jpg#100)
+<img src="assets/images/group.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * History
 
-![History](assets/images/history.jpg#100)
+<img src="assets/images/history.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Payment In/Out
 
-![Payment](assets/images/payment.jpg#100)
+<img src="assets/images/payment.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Statistic
 
-![Statistic](assets/images/statistic.jpg#100)
+<img src="assets/images/statistic.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Profile
 
-![Profile](assets/images/profile.jpg#100)
+<img src="assets/images/profile.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Qr Scan
 
-![Scan](assets/images/qr-scan.jpg#100)
+<img src="assets/images/qr-scan.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
 * Qr Code
 
-![Code](assets/images/qr-code.jpg#100)
+<img src="assets/images/qr-code.jpg" alt="" data-canonical-src="" width="250" height="250" />
 
