@@ -54,11 +54,11 @@ flutter run
 
 * Onboarding
 
-![Onboarding](assets/images/onboard.jpg#100)
+![Onboarding](assets/images/onboard.jpg =250x250)
 
 * Login
 
-![Login](assets/images/login.jpg#100)
+![Login](assets/images/login.jpg =250x250)
 
 * Home Page
 
