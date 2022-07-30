@@ -54,53 +54,53 @@ flutter run
 
 * Onboarding
 
-<img src="assets/images/onboard.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/onboard.jpg" alt="" data-canonical-src="" width="250" />
 
 * Login
 
-<img src="assets/images/login.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/login.jpg" alt="" data-canonical-src="" width="250"  />
 
 * Home Page
 
-<img src="assets/images/homepage.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/homepage.jpg" alt="" data-canonical-src="" width="250" />
 
 * Send
 
-<img src="assets/images/send.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/send.jpg" alt="" data-canonical-src="" width="250"  />
 
 * Request
 
-<img src="assets/images/request.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/request.jpg" alt="" data-canonical-src="" width="250"  />
 
 * Split Bill
 
-<img src="assets/images/splitbill.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/splitbill.jpg" alt="" data-canonical-src="" width="250"  />
 
 * Group
 
-<img src="assets/images/group.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/group.jpg" alt="" data-canonical-src="" width="250"  />
 
 * History
 
-<img src="assets/images/history.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/history.jpg" alt="" data-canonical-src="" width="250"  />
 
 * Payment In/Out
 
-<img src="assets/images/payment.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/payment.jpg" alt="" data-canonical-src="" width="250" />
 
 * Statistic
 
-<img src="assets/images/statistic.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/statistic.jpg" alt="" data-canonical-src="" width="250"  />
 
 * Profile
 
-<img src="assets/images/profile.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/profile.jpg" alt="" data-canonical-src="" width="250"  />
 
 * Qr Scan
 
-<img src="assets/images/qr-scan.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/qr-scan.jpg" alt="" data-canonical-src="" width="250" />
 
 * Qr Code
 
-<img src="assets/images/qr-code.jpg" alt="" data-canonical-src="" width="250" height="250" />
+<img src="assets/images/qr-code.jpg" alt="" data-canonical-src="" width="250"  />
 
