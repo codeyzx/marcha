@@ -54,7 +54,8 @@ flutter run
 
 * Onboarding
 
-![](assets/images/onboard.jpg | width=100)
+![](assets/images/onboard.jpg)
+<img src="assets/images/onboard.jpg" alt="" data-canonical-src="" width="200" height="400" />
 
 * Login
 
