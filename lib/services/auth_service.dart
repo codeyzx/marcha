@@ -40,6 +40,9 @@ class AuthService {
 
   Future<UserModel> googleLogin() async {
     try {
+      CollectionReference userReference =
+          FirebaseFirestore.instance.collection('users');
+
       await _googleSignIn.signOut();
       await _googleSignIn.signIn().then((value) => _currentUser = value);
 
@@ -62,20 +65,11 @@ class AuthService {
 
       String? token = await FirebaseMessaging.instance.getToken();
 
-      print('USER CREDENTIAL:');
-      print(userCredential);
-
-      CollectionReference userReference =
-          FirebaseFirestore.instance.collection('users');
-
-      print('NGEPRINT UID: ${userCredential!.user!.uid}');
       final checkUser =
           await userReference.doc(userCredential!.user!.uid).get();
 
-      Map<String, dynamic>? data = checkUser.data()! as Map<String, dynamic>?;
+      Map<String, dynamic>? data = checkUser.data() as Map<String, dynamic>?;
 
-      print('CHECK USER DATA UTK NGESET:');
-      print(checkUser.data());
       if (checkUser.data() == null) {
         print('USER DATA IS TRUE, AKAN SET DOCUMENT:');
         userReference.doc(userCredential!.user!.uid).set({
@@ -107,10 +101,6 @@ class AuthService {
       UserModel user =
           await UserService().getUserById(userCredential!.user!.uid);
 
-      print('CREDENTIAL: N$userCredential');
-      print('CURRENT USER: N $_currentUser');
-      print('USER: \n ${user.pin}');
-
       return user;
     } catch (e) {
       rethrow;
@@ -130,7 +120,7 @@ class AuthService {
           .get();
 
       Map<String, dynamic>? userData =
-          checkUser.data()! as Map<String, dynamic>?;
+          checkUser.data() as Map<String, dynamic>?;
 
       if (checkUser.data() == null) {
         await userReference

@@ -72,6 +72,7 @@ class _MyAppState extends State<MyApp> {
       child: ScreenUtilInit(
         designSize: const Size(360, 640),
         builder: (context, child) => MaterialApp(
+          title: 'Marcha',
           debugShowCheckedModeBanner: false,
           routes: {
             '/splash': (context) => SplashPage(
