@@ -75,8 +75,6 @@ class ProfilePage extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(8.r),
                                           child: Image.network(
-                                            // 'https://user-images.githubusercontent.com/70552996/164889649-38092a1e-2bb7-46cf-bd37-8d916a9a6828.jpg',
-                                            // state.user.photo,
                                             e['photo'],
                                             width: 54.w,
                                             height: 54.h,

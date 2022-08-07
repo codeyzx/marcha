@@ -309,6 +309,12 @@ TextStyle moneyActivity = GoogleFonts.poppins(
   fontSize: 16.sp,
 );
 
+TextStyle moneyActivityPending = GoogleFonts.poppins(
+  color: HexColor('#000000').withOpacity(0.7),
+  fontWeight: FontWeight.w500,
+  fontSize: 16.sp,
+);
+
 TextStyle moneyActivityLoss = GoogleFonts.poppins(
   color: HexColor('#DB3F3F'),
   fontWeight: FontWeight.w500,

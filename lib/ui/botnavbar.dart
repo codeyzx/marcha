@@ -27,8 +27,8 @@ class _BotNavBarState extends State<BotNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageStorage(
-        child: currentScreen,
         bucket: bucket,
+        child: currentScreen,
       ),
       floatingActionButton: FloatingActionButton(
         child: Image.asset(

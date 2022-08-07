@@ -99,7 +99,7 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
 
   @override
   Widget build(BuildContext context) {
-    int _isFilled = 0;
+    int isFilled = 0;
     final divideAmount = _amounts / _friendName.length;
     // bool _statusPayment = true;
     int totalPembayaran = 0;
@@ -342,11 +342,11 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
                               if (_formKey[indexForm]
                                   .currentState!
                                   .validate()) {
-                                _isFilled++;
+                                isFilled++;
                               }
                             }
 
-                            if (_isFilled == _friendID.length) {
+                            if (isFilled == _friendID.length) {
                               for (var i = 0; i < _friendID.length; i++) {
                                 var prefix =
                                     _controllers[i].text.split('Rp')[1].trim();
@@ -486,7 +486,7 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
                                     bottom: 120, right: 20, left: 20),
                               ));
                               setState(() {
-                                _isFilled = 0;
+                                isFilled = 0;
                                 // _statusPayment = false;
                               });
                             }
@@ -726,13 +726,13 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
                               if (_formKey[indexForm]
                                   .currentState!
                                   .validate()) {
-                                _isFilled++;
+                                isFilled++;
                               }
                             }
 
-                            print('isfillednya: $_isFilled');
+                            print('isfillednya: $isFilled');
 
-                            if (_isFilled == _friendID.length) {
+                            if (isFilled == _friendID.length) {
                               // for (var i = 0; i < _friendID.length; i++) {
                               //   totalPembayaran +=
                               //       int.tryParse(_controllers[i].text)!;
@@ -801,7 +801,8 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
                                     'userTargetName': _friendName[i],
                                     'userTargetEmail': _friendEmail[i],
                                     'userTargetPhoto': _friendPhoto[i],
-                                    'userTargetDeviceToken': _friendDeviceToken[i],
+                                    'userTargetDeviceToken':
+                                        _friendDeviceToken[i],
                                     'status': false,
                                     'statusPayment': false,
                                     'amount': int.tryParse(
@@ -857,7 +858,7 @@ class _SplitBillAdvancedPageState extends State<SplitBillAdvancedPage> {
                                     left: 20),
                               ));
                               setState(() {
-                                _isFilled = 0;
+                                isFilled = 0;
                                 // _statusPayment = false;
                               });
                             }

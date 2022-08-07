@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marcha_branch/models/user_model.dart';
 import 'package:marcha_branch/services/auth_service.dart';
 import 'package:marcha_branch/services/user_service.dart';
@@ -11,7 +11,6 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
   UserCredential? userCredential;
 
   // Future<void> googleLogin() async {
@@ -100,7 +99,7 @@ class AuthCubit extends Cubit<AuthState> {
   //     UserModel users = await UserService().getUserById(user!.uid);
 
   //     emit(AuthSuccess(users));
-      
+
   //     if (isSignIn) {
   //       return true;
   //     } else {
@@ -173,6 +172,16 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       emit(AuthLoading());
       UserModel user = await AuthService().googleLogin();
+      emit(AuthSuccess(user));
+    } catch (e) {
+      emit(AuthFailed(e.toString()));
+    }
+  }
+
+  Future uidLogin(Response dataResponseToken) async {
+    try {
+      emit(AuthLoading());
+      UserModel user = await AuthService().uidLogin(dataResponseToken);
       emit(AuthSuccess(user));
     } catch (e) {
       emit(AuthFailed(e.toString()));

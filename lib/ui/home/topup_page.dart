@@ -5,12 +5,10 @@ import 'package:currency_text_input_formatter/currency_text_input_formatter.dart
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/api/api_base_helper.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:marcha_branch/ui/history/history_page.dart';
 import 'package:midtrans_sdk/midtrans_sdk.dart';
 
 class TopUpPage extends StatefulWidget {
@@ -77,10 +75,12 @@ class _TopUpPageState extends State<TopUpPage> {
         await orders.doc().set({
           "createdAt": DateTime.now(),
           "orderId": result.orderId,
+          "methodPayment": '',
+          "token": "",
           "customerId": _uid,
           "status": "",
           "amount": int.tryParse(concatenate.toString()),
-          "items": "Top Up ${amount.text}",
+          "items": amount.text,
         });
 
         // Navigator.pushReplacementNamed(context, '/nav-bar');
@@ -121,27 +121,30 @@ class _TopUpPageState extends State<TopUpPage> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'History Top Up',
-                  style: subTitleFriend,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HistoryPage(),
-                        ));
-                  },
-                  child: Text(
-                    "See all",
-                    style: addText,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'History Top Up',
+                    style: subTitleFriend,
                   ),
-                ),
-              ],
+                  TextButton(
+                    onPressed: () {
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => HistoryPage(),
+                      //     ));
+                    },
+                    child: Text(
+                      "See all",
+                      style: addText,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 14.h,
@@ -154,88 +157,100 @@ class _TopUpPageState extends State<TopUpPage> {
                     children: (snapshot.data!)
                         .docs
                         .map(
-                          (e) => Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 10.h, horizontal: 10.w),
-                                width: 1.sw,
-                                height: 70.h,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: HexColor("#9D20FF")
-                                            .withOpacity(0.10),
-                                        blurRadius: 5,
-                                        spreadRadius: 0,
-                                        offset: Offset(2, 2),
+                          (e) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10.h, horizontal: 10.w),
+                              width: 1.sw,
+                              height: 80.h,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color:
+                                          HexColor("#9D20FF").withOpacity(0.10),
+                                      blurRadius: 5,
+                                      spreadRadius: 0,
+                                      offset: Offset(2, 2),
+                                    ),
+                                  ]),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          // SizedBox(
+                                          //   width: 127.w,
+                                          //   child: Text(
+                                          //     e['orderId'],
+                                          //     style: GoogleFonts.poppins(
+                                          //       fontSize: 13,
+                                          //     ),
+                                          //   ),
+                                          // ),
+                                          Text(e['items']),
+                                          Text(
+                                              'Method Payment : ${e['methodPayment']}'),
+
+                                          e['token'] == ''
+                                              ? SizedBox()
+                                              : Text('Token : ${e['token']}'),
+                                          Text(
+                                            formatDate(
+                                                e['createdAt'].toDate(), [
+                                              dd,
+                                              ' ',
+                                              MM,
+                                              ',  ',
+                                              // yyyy
+                                              HH,
+                                              ':',
+                                              nn
+                                            ]),
+                                            // "17 Feb, 13:30",
+                                            style: timeHome,
+                                          ),
+                                        ],
                                       ),
-                                    ]),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: 127.w,
-                                              child: Text(
-                                                e['orderId'],
-                                                style: GoogleFonts.poppins(
-                                                  fontSize: 13,
-                                                ),
-                                                // "Vladimir Putin",
-                                                // style: titleName,
-                                                // maxLines: 1,
-                                                // overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                            Text(
-                                              formatDate(
-                                                  e['createdAt'].toDate(), [
-                                                dd,
-                                                ' ',
-                                                MM,
-                                                ',  ',
-                                                // yyyy
-                                                HH,
-                                                ':',
-                                                nn
-                                              ]),
-                                              // "17 Feb, 13:30",
-                                              style: timeHome,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
+                                    ],
+                                  ),
+                                  Text(
                                       // "Rp -${e['amount']}",
-                                      e['status'],
-                                      style: moneyActivity,
-                                    ),
-                                    Text(
-                                      // "Rp -${e['amount']}",
-                                      "+ ${convertToIdr(e['amount'])}",
-                                      style: moneyActivity,
-                                    ),
-                                  ],
-                                ),
+                                      e['status'] == 'settlement'
+                                          ? 'Berhasil'
+                                          : e['status'] == 'failure'
+                                              ? 'Gagal'
+                                              : e['status'] == 'pending'
+                                                  ? 'Menunggu'
+                                                  : e['status'],
+                                      style: e['status'] == 'settlement'
+                                          ? moneyActivity
+                                          : e['status'] == 'failure'
+                                              ? moneyActivityLoss
+                                              : e['status'] == 'pending'
+                                                  ? moneyActivityPending
+                                                  : moneyActivity),
+                                  e['status'] == 'settlement'
+                                      ? Text(
+                                          // "Rp -${e['amount']}",
+                                          "+ ${convertToIdr(e['amount'])}",
+                                          style: moneyActivity,
+                                        )
+                                      : SizedBox()
+                                ],
                               ),
-                              // SizedBox(
-                              //   height: 10.h,
-                              // ),
-                            ],
+                            ),
                           ),
                         )
                         .toList(),
@@ -336,7 +351,7 @@ class _TopUpPageState extends State<TopUpPage> {
                                       "price":
                                           int.tryParse(concatenate.toString()),
                                       "quantity": 1,
-                                      "name": "Top Up ${amount.text}"
+                                      "name": amount.text
                                     }
                                   ],
                                   // "callbacks": {"url": "string"},

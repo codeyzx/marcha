@@ -174,6 +174,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             ),
                           ),
                           prefixIcon: Padding(
+                            padding: EdgeInsets.only(left: 10.w, right: 10.w),
                             child: IconTheme(
                               data: IconThemeData(
                                   color: Theme.of(context).primaryColor),
@@ -182,7 +183,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 color: HexColor("#F2C94C"),
                               ),
                             ),
-                            padding: EdgeInsets.only(left: 10.w, right: 10.w),
                           ),
                           labelText: "Email",
                           hintStyle: TextStyle(

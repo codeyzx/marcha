@@ -32,10 +32,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   currency_text_input_formatter: ^2.1.5
   date_format: ^2.0.5
+  dio: ^4.0.6
   equatable: ^2.0.3
   firebase_auth: ^3.3.11
   firebase_core: ^1.13.1
-  firebase_messaging: ^11.4.2
+  firebase_messaging: ^12.0.1
   firebase_storage: ^10.2.17
   flutter:
     sdk: flutter
@@ -45,8 +46,7 @@ dependencies:
   flutter_screenutil: ^5.3.1
   fluttertoast: ^8.0.9
   font_awesome_flutter: ^10.1.0
-  get: ^4.6.1
-  google_fonts: ^2.3.1
+  google_fonts: ^3.0.1
   google_sign_in: ^5.2.4
   hexcolor: ^2.0.6
   hive: ^2.2.2
@@ -56,7 +56,8 @@ dependencies:
   image_picker: ^0.8.5+3
   intl: ^0.17.0
   midtrans_sdk: ^0.3.4
-  permission_handler: ^9.2.0
+  percent_indicator: ^4.2.2
+  permission_handler: ^10.0.0
   persistent_bottom_nav_bar: ^4.0.2
   pin_code_fields: ^7.4.0
   qr_code_scanner: ^1.0.0
@@ -64,10 +65,12 @@ dependencies:
   shared_preferences: ^2.0.13
   smooth_page_indicator: ^1.0.0+2
   syncfusion_flutter_charts: ^20.1.50
+  uni_links: ^0.5.1
+  url_launcher: ^6.1.5
 
 dev_dependencies:
   flutter_launcher_icons: ^0.9.2
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
 

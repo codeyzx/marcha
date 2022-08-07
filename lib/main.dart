@@ -7,7 +7,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
-import 'package:marcha_branch/cubit/page_cubit.dart';
 import 'package:marcha_branch/ui/botnavbar.dart';
 import 'package:marcha_branch/ui/history/history_page.dart';
 import 'package:marcha_branch/ui/onboard/onboard_page.dart';
@@ -18,22 +17,17 @@ import 'package:marcha_branch/ui/split_bill/splitBill_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 int? initScreen;
+String? uid;
 
-/// Create a [AndroidNotificationChannel] for heads up notifications
 late AndroidNotificationChannel channel;
-
-/// Initialize the [FlutterLocalNotificationsPlugin] package.
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Hive Setup
   await Hive.initFlutter();
-  // Hive.registerAdapter(NotificationTransactionAdapter());
   await Hive.openBox('notif');
 
-  // Firestore Setup
   await Firebase.initializeApp(
       options: FirebaseOptions(
           apiKey: "AIzaSyDKyW4hEbNdrdADXREuBgjTFsRptivD9Xo",
@@ -41,17 +35,11 @@ Future<void> main() async {
           messagingSenderId: "1054254460241",
           projectId: "marcha-branch"));
 
-  // FCM onBackground
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-  // String? token = await FirebaseMessaging.instance.getToken();
-  // print('INI TOKEN');
-  // print(token);
-
-  // // await loadFCM();
 
   SharedPreferences pref = await SharedPreferences.getInstance();
   initScreen = pref.getInt('initScreen');
+  uid = pref.getString('uid');
   await pref.setInt('initScreen', 1);
 
   runApp(MyApp());
@@ -78,28 +66,26 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => PageCubit(),
-        ),
-        BlocProvider(
           create: (context) => AuthCubit(),
         ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 640),
-        builder: () => MaterialApp(
+        builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           routes: {
-            '/splash': (context) => SplashPage(),
+            '/splash': (context) => SplashPage(
+                  sharedPreference: initScreen,
+                  uid: uid,
+                ),
             '/onBoarding': (context) => OnBoardPage(),
             '/sign-in': (context) => LoginPage(),
             '/sign-up': (context) => SignupPage(),
             '/nav-bar': (context) => BotNavBar(),
             '/split-bill': (context) => SplitBillPage(),
-            // '/friend-page': (context) => FriendsPage(),
             '/history-page': (context) => HistoryPage(),
           },
-          initialRoute:
-              initScreen == 0 || initScreen == null ? '/onBoarding' : '/splash',
+          initialRoute: '/splash',
         ),
       ),
     );
@@ -130,17 +116,14 @@ Future<void> requestPermission() async {
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   try {
-    // Hive Setup
     await Hive.initFlutter();
     await Hive.openBox('notif');
 
-    // Hive Operation
     final box = Hive.box('notif');
     await box.add({
       'title': message.data['title'],
       'body': message.data['body'],
     });
-    print('background');
   } catch (e) {
     print(e);
   }
@@ -149,27 +132,20 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 Future<void> loadFCM() async {
   if (!kIsWeb) {
     channel = const AndroidNotificationChannel(
-      'high_importance_channel', // id
-      'High Importance Notifications', // title
-      description:
-          'This channel is used for important notifications.', // description
+      'high_importance_channel',
+      'High Importance Notifications',
+      description: 'This channel is used for important notifications.',
       importance: Importance.high,
       enableVibration: true,
     );
 
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-    /// Create an Android Notification Channel.
-    ///
-    /// We use this channel in the `AndroidManifest.xml` file to override the
-    /// default FCM channel to enable heads up notifications.
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
-    /// Update the iOS foreground notification presentation options to allow
-    /// heads up notifications.
     await FirebaseMessaging.instance
         .setForegroundNotificationPresentationOptions(
       alert: true,
@@ -184,17 +160,10 @@ Future<void> listenFCM() async {
     RemoteNotification? notification = message.notification;
     AndroidNotification? android = message.notification?.android;
     if (notification != null && android != null && !kIsWeb) {
-      print('listenfcm');
       try {
-        // Hive Setup
         await Hive.initFlutter();
-        // Hive.registerAdapter(NotificationTransactionAdapter());
         await Hive.openBox('notif');
 
-        // Hive Operation
-        // final notification = NotificationTransaction()
-        //   ..title = message.data['title']
-        //   ..body = message.data['body'];
         final box = Hive.box('notif');
         await box.add({
           'title': message.data['title'],

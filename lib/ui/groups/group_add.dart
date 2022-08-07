@@ -174,8 +174,6 @@ class _GroupAddState extends State<GroupAdd> {
                               'name': _friendName[i],
                               'email': _friendEmail[i],
                             });
-
-                            
                           }
 
                           Navigator.pushReplacement(

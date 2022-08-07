@@ -221,7 +221,7 @@ class _SendDetailState extends State<SendDetail> {
                             context: context,
                             builder: (context) => makeDismissible(
                               child: DraggableScrollableSheet(
-                                  initialChildSize: 0.7,
+                                  initialChildSize: 0.6,
                                   builder: (_, controller) => Container(
                                         decoration: BoxDecoration(
                                           color: HexColor("#F6F6F6"),

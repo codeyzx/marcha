@@ -218,13 +218,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         Container(
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.only(top: 25.h),
                           child: Text(
                             "LOGIN",
                             maxLines: 1,
                             textAlign: TextAlign.center,
                           ),
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.only(top: 25.h),
                         ),
                         SizedBox(
                           height: 18.h,
@@ -251,6 +251,8 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               prefixIcon: Padding(
+                                padding:
+                                    EdgeInsets.only(left: 10.w, right: 10.w),
                                 child: IconTheme(
                                   data: IconThemeData(
                                       color: Theme.of(context).primaryColor),
@@ -259,8 +261,6 @@ class _LoginPageState extends State<LoginPage> {
                                     color: HexColor("#F2C94C"),
                                   ),
                                 ),
-                                padding:
-                                    EdgeInsets.only(left: 10.w, right: 10.w),
                               ),
                               labelText: "Email",
                               hintStyle: TextStyle(
@@ -299,6 +299,8 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               prefixIcon: Padding(
+                                padding:
+                                    EdgeInsets.only(left: 10.w, right: 10.w),
                                 child: IconTheme(
                                   data: IconThemeData(
                                       color: Theme.of(context).primaryColor),
@@ -307,8 +309,6 @@ class _LoginPageState extends State<LoginPage> {
                                     color: HexColor("#F2C94C"),
                                   ),
                                 ),
-                                padding:
-                                    EdgeInsets.only(left: 10.w, right: 10.w),
                               ),
                               labelText: "Kata Sandi",
                               hintStyle: TextStyle(
@@ -369,6 +369,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 9.h,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
                               child: signupDesc,
@@ -377,7 +378,6 @@ class _LoginPageState extends State<LoginPage> {
                               child: daftar,
                             ),
                           ],
-                          mainAxisAlignment: MainAxisAlignment.center,
                         ),
                       ],
                     ),

@@ -195,399 +195,393 @@ class _SignupPageState extends State<SignupPage> {
     }
 
     return Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: HexColor("#F7F7FA"),
-            title: Text(
-              "Daftar",
-              style: TextStyle(
-                fontSize: 25.sp,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-                letterSpacing: 1.5,
-                color: Colors.black,
-              ),
-            ),
-            iconTheme: IconThemeData(color: HexColor("#3a7bd5")),
-            centerTitle: true,
-            automaticallyImplyLeading: true,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: HexColor("#F7F7FA"),
+        title: Text(
+          "Daftar",
+          style: TextStyle(
+            fontSize: 25.sp,
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w500,
+            letterSpacing: 1.5,
+            color: Colors.black,
           ),
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).requestFocus(FocusNode());
-              },
-              child: SizedBox(
-                width: 1.sw,
-                height: 1.sh,
-                child: SingleChildScrollView(
-                  physics: ClampingScrollPhysics(),
-                  child: Form(
-                    key: _formKey,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 28.w, vertical: 40.h),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.only(left: 5.w),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(
-                                    color: HexColor("#303030"),
-                                    width: 1,
-                                  ),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(
-                                    color: HexColor("#303030"),
-                                    width: 1,
-                                  ),
-                                ),
-                                prefixIcon: Padding(
-                                  child: IconTheme(
-                                    data: IconThemeData(
-                                        color: Theme.of(context).primaryColor),
-                                    child: Icon(
-                                      Icons.person,
-                                      color: HexColor("#F2C94C"),
-                                    ),
-                                  ),
-                                  padding: EdgeInsets.only(left: 10, right: 10),
-                                ),
-                                labelText: "Nama",
-                                hintText: "User",
-                                hintStyle: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12.sp,
+        ),
+        iconTheme: IconThemeData(color: HexColor("#3a7bd5")),
+        centerTitle: true,
+        automaticallyImplyLeading: true,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: SizedBox(
+            width: 1.sw,
+            height: 1.sh,
+            child: SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
+              child: Form(
+                key: _formKey,
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 28.w, vertical: 40.h),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.only(left: 5.w),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(2),
+                              borderSide: BorderSide(
+                                color: HexColor("#303030"),
+                                width: 1,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(2),
+                              borderSide: BorderSide(
+                                color: HexColor("#303030"),
+                                width: 1,
+                              ),
+                            ),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              child: IconTheme(
+                                data: IconThemeData(
+                                    color: Theme.of(context).primaryColor),
+                                child: Icon(
+                                  Icons.person,
+                                  color: HexColor("#F2C94C"),
                                 ),
                               ),
-                              controller: _name,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return "Masukkan Nama Lengkap Anda!";
-                                }
-                                return null;
-                              },
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              onSaved: (input) {
-                                _name.text = input!;
+                            ),
+                            labelText: "Nama",
+                            hintText: "User",
+                            hintStyle: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 12.sp,
+                            ),
+                          ),
+                          controller: _name,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Masukkan Nama Lengkap Anda!";
+                            }
+                            return null;
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          onSaved: (input) {
+                            _name.text = input!;
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.only(left: 5.w),
+                        child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(2),
+                              borderSide: BorderSide(
+                                color: HexColor("#303030"),
+                                width: 1,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(2),
+                              borderSide: BorderSide(
+                                color: HexColor("#303030"),
+                                width: 1,
+                              ),
+                            ),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              child: IconTheme(
+                                data: IconThemeData(
+                                    color: Theme.of(context).primaryColor),
+                                child: Icon(
+                                  Icons.email_rounded,
+                                  color: HexColor("#F2C94C"),
+                                ),
+                              ),
+                            ),
+                            labelText: "Email",
+                            hintText: "user@example.com",
+                            hintStyle: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 12.sp,
+                            ),
+                          ),
+                          controller: _email,
+                          validator: emailValidator,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.only(left: 5.w),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(2),
+                              borderSide: BorderSide(
+                                color: HexColor("#303030"),
+                                width: 1,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(2),
+                              borderSide: BorderSide(
+                                color: HexColor("#303030"),
+                                width: 1,
+                              ),
+                            ),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              child: IconTheme(
+                                data: IconThemeData(
+                                    color: Theme.of(context).primaryColor),
+                                child: Icon(
+                                  Icons.lock_rounded,
+                                  color: HexColor("#F2C94C"),
+                                ),
+                              ),
+                            ),
+                            labelText: "Kata Sandi",
+                            hintText: "Example : User_123",
+                            hintStyle: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 12.sp,
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _passwordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Theme.of(context).primaryColorDark,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _passwordVisible = !_passwordVisible;
+                                });
                               },
                             ),
                           ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.only(left: 5.w),
-                            child: TextFormField(
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(
-                                    color: HexColor("#303030"),
-                                    width: 1,
-                                  ),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(
-                                    color: HexColor("#303030"),
-                                    width: 1,
-                                  ),
-                                ),
-                                prefixIcon: Padding(
-                                  child: IconTheme(
-                                    data: IconThemeData(
-                                        color: Theme.of(context).primaryColor),
-                                    child: Icon(
-                                      Icons.email_rounded,
-                                      color: HexColor("#F2C94C"),
-                                    ),
-                                  ),
-                                  padding: EdgeInsets.only(left: 10, right: 10),
-                                ),
-                                labelText: "Email",
-                                hintText: "user@example.com",
-                                hintStyle: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12.sp,
-                                ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Kata Sandi tidak boleh kosong';
+                            }
+                            if (value.length < 6) {
+                              return 'Minimal Kata Sandi 6 Karakter';
+                            }
+                            return null;
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          obscureText: !_passwordVisible,
+                          controller: _password,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.only(left: 5.w),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(2),
+                              borderSide: BorderSide(
+                                color: HexColor("#303030"),
+                                width: 1,
                               ),
-                              controller: _email,
-                              validator: emailValidator,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
                             ),
-                          ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.only(left: 5.w),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(
-                                    color: HexColor("#303030"),
-                                    width: 1,
-                                  ),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(
-                                    color: HexColor("#303030"),
-                                    width: 1,
-                                  ),
-                                ),
-                                prefixIcon: Padding(
-                                  child: IconTheme(
-                                    data: IconThemeData(
-                                        color: Theme.of(context).primaryColor),
-                                    child: Icon(
-                                      Icons.lock_rounded,
-                                      color: HexColor("#F2C94C"),
-                                    ),
-                                  ),
-                                  padding: EdgeInsets.only(left: 10, right: 10),
-                                ),
-                                labelText: "Kata Sandi",
-                                hintText: "Example : User_123",
-                                hintStyle: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12.sp,
-                                ),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    _passwordVisible
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: Theme.of(context).primaryColorDark,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _passwordVisible = !_passwordVisible;
-                                    });
-                                  },
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(2),
+                              borderSide: BorderSide(
+                                color: HexColor("#303030"),
+                                width: 1,
+                              ),
+                            ),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              child: IconTheme(
+                                data: IconThemeData(
+                                    color: Theme.of(context).primaryColor),
+                                child: Icon(
+                                  Icons.lock_rounded,
+                                  color: HexColor("#F2C94C"),
                                 ),
                               ),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Kata Sandi tidak boleh kosong';
-                                }
-                                if (value.length < 6) {
-                                  return 'Minimal Kata Sandi 6 Karakter';
-                                }
-                                return null;
+                            ),
+                            labelText: "Ulang Kata Sandi",
+                            hintText: "Ulangi Kata Sandi Anda!",
+                            hintStyle: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 12.sp,
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _repeatpasswordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Theme.of(context).primaryColorDark,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _repeatpasswordVisible =
+                                      !_repeatpasswordVisible;
+                                });
                               },
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              obscureText: !_passwordVisible,
-                              controller: _password,
                             ),
                           ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.only(left: 5.w),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(
-                                    color: HexColor("#303030"),
-                                    width: 1,
-                                  ),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                  borderSide: BorderSide(
-                                    color: HexColor("#303030"),
-                                    width: 1,
-                                  ),
-                                ),
-                                prefixIcon: Padding(
-                                  child: IconTheme(
-                                    data: IconThemeData(
-                                        color: Theme.of(context).primaryColor),
-                                    child: Icon(
-                                      Icons.lock_rounded,
-                                      color: HexColor("#F2C94C"),
-                                    ),
-                                  ),
-                                  padding: EdgeInsets.only(left: 10, right: 10),
-                                ),
-                                labelText: "Ulang Kata Sandi",
-                                hintText: "Ulangi Kata Sandi Anda!",
-                                hintStyle: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12.sp,
-                                ),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    _repeatpasswordVisible
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: Theme.of(context).primaryColorDark,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _repeatpasswordVisible =
-                                          !_repeatpasswordVisible;
-                                    });
-                                  },
-                                ),
-                              ),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Konfirmasi Kata Sandi harus diisi';
-                                }
-                                if (_confirm.text != _password.text) {
-                                  return 'Kata Sandi yang dimasukkan tidak sesuai';
-                                }
-                                return null;
-                              },
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              obscureText: !_repeatpasswordVisible,
-                              controller: _confirm,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Container(
-                            child: FormField<bool>(
-                              builder: (state) {
-                                return CheckboxListTile(
-                                  title: Padding(
-                                    padding: EdgeInsets.only(top: 16.h),
-                                    child: RichText(
-                                      text: TextSpan(
-                                        text: "Saya setuju dengan",
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Konfirmasi Kata Sandi harus diisi';
+                            }
+                            if (_confirm.text != _password.text) {
+                              return 'Kata Sandi yang dimasukkan tidak sesuai';
+                            }
+                            return null;
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          obscureText: !_repeatpasswordVisible,
+                          controller: _confirm,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Container(
+                        child: FormField<bool>(
+                          builder: (state) {
+                            return CheckboxListTile(
+                              title: Padding(
+                                padding: EdgeInsets.only(top: 16.h),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: "Saya setuju dengan",
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w500,
+                                        fontFamily: 'Poppins',
+                                        color: Colors.black),
+                                    children: [
+                                      TextSpan(
+                                        text: " Syarat & Ketentuan",
+                                        style: TextStyle(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: " dan",
                                         style: TextStyle(
                                             fontSize: 14.sp,
                                             fontWeight: FontWeight.w500,
                                             fontFamily: 'Poppins',
                                             color: Colors.black),
-                                        children: [
-                                          TextSpan(
-                                            text: " Syarat & Ketentuan",
-                                            style: TextStyle(
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Poppins',
-                                              color: Colors.blue,
-                                            ),
-                                          ),
-                                          TextSpan(
-                                            text: " dan",
-                                            style: TextStyle(
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                                color: Colors.black),
-                                          ),
-                                          TextSpan(
-                                            text: " Kebijakan Privasi",
-                                            style: TextStyle(
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Poppins',
-                                              color: Colors.blue,
-                                            ),
-                                          ),
-                                          TextSpan(
-                                            text: " yang berlaku",
-                                            style: TextStyle(
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins',
-                                                color: Colors.black),
-                                          ),
-                                        ],
                                       ),
-                                    ),
+                                      TextSpan(
+                                        text: " Kebijakan Privasi",
+                                        style: TextStyle(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: " yang berlaku",
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black),
+                                      ),
+                                    ],
                                   ),
-                                  contentPadding: EdgeInsets.only(left: 5.w),
-                                  controlAffinity:
-                                      ListTileControlAffinity.leading,
-                                  value: _acceptTerms,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _acceptTerms = value!;
-                                      state.didChange(value);
-                                      if (value == true) {
-                                        isButtonActive = true;
-                                      } else {
-                                        isButtonActive = false;
-                                      }
-                                    });
-                                  },
-                                  subtitle: Text(
-                                    state.errorText ?? '',
-                                    style: TextStyle(
-                                      fontSize: 13.sp,
-                                      color: Theme.of(context).errorColor,
-                                    ),
-                                  ),
-                                );
-                              },
-                              validator: (value) {
-                                if (!_acceptTerms) {
-                                  return '*Anda Perlu Menyetujui S&K!';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 6.h,
-                          ),
-                          _loading ? loadIndicator : daftarPintas,
-                          SizedBox(
-                            height: 9.h,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                child: loginDesc,
+                                ),
                               ),
-                              Container(
-                                child: kelogin,
+                              contentPadding: EdgeInsets.only(left: 5.w),
+                              controlAffinity: ListTileControlAffinity.leading,
+                              value: _acceptTerms,
+                              onChanged: (value) {
+                                setState(() {
+                                  _acceptTerms = value!;
+                                  state.didChange(value);
+                                  if (value == true) {
+                                    isButtonActive = true;
+                                  } else {
+                                    isButtonActive = false;
+                                  }
+                                });
+                              },
+                              subtitle: Text(
+                                state.errorText ?? '',
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  color: Theme.of(context).errorColor,
+                                ),
                               ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            );
+                          },
+                          validator: (value) {
+                            if (!_acceptTerms) {
+                              return '*Anda Perlu Menyetujui S&K!';
+                            } else {
+                              return null;
+                            }
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 6.h,
+                      ),
+                      _loading ? loadIndicator : daftarPintas,
+                      SizedBox(
+                        height: 9.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: loginDesc,
                           ),
-                          SizedBox(
-                            height: 2.h,
+                          Container(
+                            child: kelogin,
                           ),
                         ],
                       ),
-                    ),
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
-        );
+        ),
+      ),
+    );
   }
 }
 

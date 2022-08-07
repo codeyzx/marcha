@@ -29,12 +29,28 @@ class DevelopmentPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: 60.h,),
-          Image.asset('assets/images/development-img.png', width: 280.w, height: 172.23.h,),
-          SizedBox(height: 12.77.h,),
-          Text('Dalam Development', style: titleElse,),
-          Text('Maaf halaman ini masih di tahap development', style: subTitleElse,),
-          SizedBox(height: 30.h,),
+          SizedBox(
+            height: 60.h,
+          ),
+          Image.asset(
+            'assets/images/development-img.png',
+            width: 280.w,
+            height: 172.23.h,
+          ),
+          SizedBox(
+            height: 12.77.h,
+          ),
+          Text(
+            'Dalam Development',
+            style: titleElse,
+          ),
+          Text(
+            'Maaf halaman ini masih di tahap development',
+            style: subTitleElse,
+          ),
+          SizedBox(
+            height: 30.h,
+          ),
           Align(
             alignment: Alignment.center,
             child: ClipRRect(
@@ -47,14 +63,11 @@ class DevelopmentPage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder:
-                              (context) =>
-                              BotNavBar(),
+                          builder: (context) => BotNavBar(),
                         ));
                   },
                   style: ButtonStyle(
-                    backgroundColor:
-                    MaterialStateProperty.all(buttonMain),
+                    backgroundColor: MaterialStateProperty.all(buttonMain),
                   ),
                   child: Text(
                     'Kembali ke Beranda',

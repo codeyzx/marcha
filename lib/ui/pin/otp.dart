@@ -79,7 +79,7 @@ class _OtpState extends State<Otp> {
                             height: 10,
                           ),
                           Text(
-                            "Enter your OTP code number",
+                            "Masukkan pin anda",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -163,30 +163,6 @@ class _OtpState extends State<Otp> {
                                 )
                               ],
                             ),
-                          ),
-                          SizedBox(
-                            height: 18,
-                          ),
-                          Text(
-                            "Didn't you receive any code?",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black38,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(
-                            height: 18,
-                          ),
-                          Text(
-                            "Resend New Code",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.purple,
-                            ),
-                            textAlign: TextAlign.center,
                           ),
                         ],
                       )

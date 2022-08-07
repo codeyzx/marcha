@@ -4,47 +4,46 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
+import 'package:marcha_branch/main.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  final int? sharedPreference;
+  final String? uid;
+  const SplashPage(
+      {Key? key, required this.sharedPreference, required this.uid})
+      : super(key: key);
 
   @override
-  _SplashPageState createState() => _SplashPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
+    checkpoint();
+    super.initState();
+  }
+
+  void checkpoint() {
     Timer(Duration(seconds: 3), () {
       User? user = FirebaseAuth.instance.currentUser;
 
-      if (user == null) {
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/sign-in', (route) => false);
+      if (widget.sharedPreference == 0 || widget.sharedPreference == null) {
+        Navigator.pushReplacementNamed(context, '/onBoarding');
       } else {
-        context.read<AuthCubit>().getCurrentUser(user.uid);
-        // print('=============== INI USER: $user');
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/nav-bar', (route) => false);
+        if (user != null) {
+          context.read<AuthCubit>().getCurrentUser(user.uid);
+          Navigator.pushReplacementNamed(context, '/nav-bar');
+        } else if (uid != null) {
+          context.read<AuthCubit>().getCurrentUser(widget.uid!);
+          Navigator.pushReplacementNamed(context, '/nav-bar');
+        } else {
+          Navigator.pushReplacementNamed(context, '/sign-in');
+        }
       }
     });
-    // Timer(Duration(seconds: 3), () {
-    //   User? user = FirebaseAuth.instance.currentUser;
-    //   context.read<AuthCubit>().autoLogin();
-
-    //   if (user == null) {
-    //     Navigator.pushNamedAndRemoveUntil(
-    //         context, '/sign-in', (route) => false);
-    //   } else {
-    //     context.read<AuthCubit>().getCurrentUser(user.uid);
-    //     print('=============== INI USER: $user');
-    //     Navigator.pushNamedAndRemoveUntil(
-    //         context, '/nav-bar', (route) => false);
-    //   }
-    // });
-    super.initState();
   }
 
   @override

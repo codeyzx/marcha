@@ -11,12 +11,28 @@ class PaymentOutElsePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 58.h,),
-          Image.asset('assets/images/else-payment-img.png', width: 150.w, height: 146.42.h,),
-          SizedBox(height: 27.h,),
-          Text('Belum Melakukan Request', style: titleElse,),
-          Text('Kirim Request ke temanmu', style: subTitleElse,),
-          SizedBox(height: 18.h,),
+          SizedBox(
+            height: 58.h,
+          ),
+          Image.asset(
+            'assets/images/else-payment-img.png',
+            width: 150.w,
+            height: 146.42.h,
+          ),
+          SizedBox(
+            height: 27.h,
+          ),
+          Text(
+            'Belum Melakukan Request',
+            style: titleElse,
+          ),
+          Text(
+            'Kirim Request ke temanmu',
+            style: subTitleElse,
+          ),
+          SizedBox(
+            height: 18.h,
+          ),
           Align(
             alignment: Alignment.center,
             child: ClipRRect(
@@ -29,14 +45,11 @@ class PaymentOutElsePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder:
-                              (context) =>
-                              RequestPage(),
+                          builder: (context) => RequestPage(),
                         ));
                   },
                   style: ButtonStyle(
-                    backgroundColor:
-                    MaterialStateProperty.all(buttonMain),
+                    backgroundColor: MaterialStateProperty.all(buttonMain),
                   ),
                   child: Text(
                     'Request',

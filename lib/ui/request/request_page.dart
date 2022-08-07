@@ -223,7 +223,9 @@ class _RequestPageState extends State<RequestPage> {
                                                             height: 60.h,
                                                           )),
                                                       Text(
-                                                        e['userTargetName'],
+                                                        e['userTargetName']
+                                                            .split(' ')
+                                                            .first,
                                                         style: nameTxt,
                                                         overflow: TextOverflow
                                                             .ellipsis,

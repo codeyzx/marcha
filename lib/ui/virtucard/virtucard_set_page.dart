@@ -7,7 +7,6 @@ import 'package:date_format/date_format.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:marcha_branch/ui/virtucard/virtucard_page.dart';
 
-
 class VirtucardSetPage extends StatefulWidget {
   const VirtucardSetPage({Key? key}) : super(key: key);
 
@@ -26,23 +25,23 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-      elevation: 0,
-      backgroundColor: buttonMain,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_ios_rounded,
-          color: Colors.white,
+        elevation: 0,
+        backgroundColor: buttonMain,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
+        title: Text(
+          "Set Virtucard",
+          style: appbarTxt,
+        ),
+        centerTitle: true,
       ),
-      title: Text(
-        "Set Virtucard",
-        style: appbarTxt,
-      ),
-      centerTitle: true,
-    ),
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
@@ -56,7 +55,9 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 18.h,),
+                    SizedBox(
+                      height: 18.h,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -110,9 +111,16 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 18.h,),
-                    Text('Member 3', style: subTitleText,),
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 18.h,
+                    ),
+                    Text(
+                      'Member 3',
+                      style: subTitleText,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -125,26 +133,20 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, int index) {
                                 return Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 15.0),
+                                  padding: const EdgeInsets.only(right: 15.0),
                                   child: SizedBox(
                                     width: 60.w,
                                     height: 83.h,
                                     child: Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment
-                                          .center,
+                                          CrossAxisAlignment.center,
                                       mainAxisAlignment:
-                                      MainAxisAlignment
-                                          .spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         ClipRRect(
                                             borderRadius:
-                                            BorderRadius
-                                                .circular(
-                                                15.r),
-                                            child:
-                                            Image.network(
+                                                BorderRadius.circular(15.r),
+                                            child: Image.network(
                                               'https://user-images.githubusercontent.com/70552996/164889649-38092a1e-2bb7-46cf-bd37-8d916a9a6828.jpg',
                                               width: 60.w,
                                               height: 60.h,
@@ -152,10 +154,8 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
                                         Text(
                                           'Joni',
                                           style: nameTxt,
-                                          overflow: TextOverflow
-                                              .ellipsis,
-                                          textAlign:
-                                          TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
                                         ),
                                       ],
                                     ),
@@ -170,9 +170,16 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 12.h,),
-                    Text('Amount per person', style: subTitleText,),
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    Text(
+                      'Amount per person',
+                      style: subTitleText,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     TextField(
                       controller: _amount,
                       keyboardType: TextInputType.number,
@@ -203,16 +210,24 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
                       ),
                       style: inputNote,
                     ),
-                    SizedBox(height: 12.h,),
-                    Text('Payment Deadline', style: subTitleText,),
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    Text(
+                      'Payment Deadline',
+                      style: subTitleText,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Container(
                       padding: EdgeInsets.all(10),
                       width: 1.sw,
                       height: 40.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(width: 2.w, color: HexColor('#ECDAFF')),
+                        border:
+                            Border.all(width: 2.w, color: HexColor('#ECDAFF')),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,10 +239,10 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
                           InkWell(
                               onTap: () {
                                 showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime.now(),
-                                    lastDate: DateTime(2069))
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime.now(),
+                                        lastDate: DateTime(2069))
                                     .then((date) {
                                   setState(() {
                                     if (date == null) {
@@ -246,9 +261,16 @@ class _VirtucardSetPageState extends State<VirtucardSetPage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 12.h,),
-                    Text('Send To', style: subTitleText,),
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    Text(
+                      'Send To',
+                      style: subTitleText,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     TextField(
                       controller: _note,
                       decoration: InputDecoration(

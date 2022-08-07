@@ -37,7 +37,9 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 25.h,),
+            SizedBox(
+              height: 25.h,
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -49,11 +51,18 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                       height: 60.h,
                       fit: BoxFit.cover,
                     )),
-                SizedBox(width: 15.w,),
-                Text('Uang Kas', style: nameDetVC,),
+                SizedBox(
+                  width: 15.w,
+                ),
+                Text(
+                  'Uang Kas',
+                  style: nameDetVC,
+                ),
               ],
             ),
-            SizedBox(height: 25.h,),
+            SizedBox(
+              height: 25.h,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -70,7 +79,9 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                 ),
               ],
             ),
-            SizedBox(height: 15.h,),
+            SizedBox(
+              height: 15.h,
+            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -84,26 +95,17 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, int index) {
                         return Padding(
-                          padding: const EdgeInsets.only(
-                              right: 15.0),
+                          padding: const EdgeInsets.only(right: 15.0),
                           child: SizedBox(
                             width: 60.w,
                             height: 83.h,
                             child: Column(
-                              crossAxisAlignment:
-                              CrossAxisAlignment
-                                  .center,
-                              mainAxisAlignment:
-                              MainAxisAlignment
-                                  .spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ClipRRect(
-                                    borderRadius:
-                                    BorderRadius
-                                        .circular(
-                                        15.r),
-                                    child:
-                                    Image.network(
+                                    borderRadius: BorderRadius.circular(15.r),
+                                    child: Image.network(
                                       'https://user-images.githubusercontent.com/70552996/164889649-38092a1e-2bb7-46cf-bd37-8d916a9a6828.jpg',
                                       width: 50.w,
                                       height: 50.h,
@@ -111,10 +113,8 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                                 Text(
                                   'Joni',
                                   style: nameTxt,
-                                  overflow: TextOverflow
-                                      .ellipsis,
-                                  textAlign:
-                                  TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.center,
                                 ),
                               ],
                             ),
@@ -129,18 +129,48 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                 ],
               ),
             ),
-            SizedBox(height: 20.h,),
-            Text('Amount to pay:', style:  subTitleText,),
-            SizedBox(height: 5.h,),
-            Text('Rp 12.000', style:  moneyDetVC,),
-            SizedBox(height: 20.h,),
-            Text('Due:', style:  subTitleText,),
-            SizedBox(height: 5.h,),
-            Text('12 Apr 2022', style:  dateDetVC,),
-            SizedBox(height: 20.h,),
-            Text('Send to:', style:  subTitleText,),
-            SizedBox(height: 5.h,),
-            Text('123-321-123', style:  moneyVC,),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              'Amount to pay:',
+              style: subTitleText,
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            Text(
+              'Rp 12.000',
+              style: moneyDetVC,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              'Due:',
+              style: subTitleText,
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            Text(
+              '12 Apr 2022',
+              style: dateDetVC,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              'Send to:',
+              style: subTitleText,
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            Text(
+              '123-321-123',
+              style: moneyVC,
+            ),
             Spacer(),
             Column(
               children: [
@@ -152,7 +182,8 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                       height: 50.h,
                       child: OutlinedButton(
                         style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.r),
                             ),
@@ -164,9 +195,7 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                             ),
                           ),
                         ),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "Settings",
                           style: textButtonSuccess,
@@ -175,7 +204,9 @@ class _VirtucardDetailPageState extends State<VirtucardDetailPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 24.h,),
+                SizedBox(
+                  height: 24.h,
+                ),
               ],
             ),
           ],

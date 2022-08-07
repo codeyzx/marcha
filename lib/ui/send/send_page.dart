@@ -222,7 +222,9 @@ class _SendPageState extends State<SendPage> {
                                                             fit: BoxFit.contain,
                                                           )),
                                                       Text(
-                                                        e['userTargetName'],
+                                                        e['userTargetName']
+                                                            .split(' ')
+                                                            .first,
                                                         style: nameTxt,
                                                         overflow: TextOverflow
                                                             .ellipsis,

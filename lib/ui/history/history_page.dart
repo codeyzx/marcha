@@ -120,7 +120,9 @@ class _HistoryPageState extends State<HistoryPage> {
                                                 SizedBox(
                                                   width: 127.w,
                                                   child: Text(
-                                                    e['userTargetName'],
+                                                    e['userTargetName']
+                                                        .split(' ')
+                                                        .first,
                                                     // "Vladimir Putin",
                                                     style: titleName,
                                                     maxLines: 1,
@@ -235,7 +237,9 @@ class _HistoryPageState extends State<HistoryPage> {
                                                 SizedBox(
                                                   width: 127.w,
                                                   child: Text(
-                                                    e['userTargetName'],
+                                                    e['userTargetName']
+                                                        .split(' ')
+                                                        .first,
                                                     // "Vladimir Putin",
                                                     style: titleName,
                                                     maxLines: 1,
@@ -350,7 +354,9 @@ class _HistoryPageState extends State<HistoryPage> {
                                                 SizedBox(
                                                   width: 127.w,
                                                   child: Text(
-                                                    e['userReqName'],
+                                                    e['userReqName']
+                                                        .split(' ')
+                                                        .first,
                                                     // "Vladimir Putin",
                                                     style: titleName,
                                                     maxLines: 1,
@@ -486,7 +492,10 @@ class _HistoryPageState extends State<HistoryPage> {
                                                                     width:
                                                                         127.w,
                                                                     child: Text(
-                                                                      e3['userTargetName'],
+                                                                      e3['userTargetName']
+                                                                          .split(
+                                                                              ' ')
+                                                                          .first,
                                                                       // "Vladimir Putin",
                                                                       style:
                                                                           titleName,
@@ -641,7 +650,10 @@ class _HistoryPageState extends State<HistoryPage> {
                                                                     width:
                                                                         127.w,
                                                                     child: Text(
-                                                                      e2['userReqName'],
+                                                                      e2['userReqName']
+                                                                          .split(
+                                                                              ' ')
+                                                                          .first,
                                                                       // "Vladimir Putin",
                                                                       style:
                                                                           titleName,

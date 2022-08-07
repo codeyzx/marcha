@@ -286,8 +286,8 @@ class _SignupPageState extends State<SignupPage> {
                   InkWell(
                     onTap: () async {
                       await context.read<AuthCubit>().googleLogin();
-                      final GoogleSignIn _googleSignIn = GoogleSignIn();
-                      final isSignIn = await _googleSignIn.isSignedIn();
+                      final GoogleSignIn googleSignIn = GoogleSignIn();
+                      final isSignIn = await googleSignIn.isSignedIn();
 
                       try {
                         if (isSignIn) {

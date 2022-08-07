@@ -30,14 +30,14 @@ class PaymentSuccessPage extends StatelessWidget {
               ),
               Center(
                   child: Text(
-                    "yay!",
-                    style: successTitle,
-                  )),
+                "yay!",
+                style: successTitle,
+              )),
               Center(
                   child: Text(
-                    "Your payment is Successful!",
-                    style: subTitleSuccess,
-                  )),
+                "Your payment is Successful!",
+                style: subTitleSuccess,
+              )),
               SizedBox(
                 height: 44.h,
               ),
@@ -54,8 +54,7 @@ class PaymentSuccessPage extends StatelessWidget {
                     height: 55.h,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
-                                  context, '/nav-bar');
+                        Navigator.pushReplacementNamed(context, '/nav-bar');
                         // Navigator.pushReplacement(
                         //     context,
                         //     MaterialPageRoute(

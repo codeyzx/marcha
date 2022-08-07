@@ -148,8 +148,7 @@ class _CreateGroupDetailPageState extends State<CreateGroupDetailPage> {
           centerTitle: true,
         ),
         body: ListView(
-          
-        padding: EdgeInsets.zero,
+          padding: EdgeInsets.zero,
           children: [
             Padding(
               padding: EdgeInsets.only(left: 20.w, right: 20.w),

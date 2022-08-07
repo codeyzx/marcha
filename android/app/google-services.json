@@ -14,43 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "1054254460241-65pps70aeo7u19f22t20agvqjlpohcmu.apps.googleusercontent.com",
+          "client_id": "1054254460241-7hj8no1uutoi2kp904n39gvo20pe92g8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.marcha_branch",
             "certificate_hash": "a5e03e382952b90b88b4957e2bf2aab3f4f9c26f"
-          }
-        },
-        {
-          "client_id": "1054254460241-8h50svgpual1s6aq0ideikgel85ke1br.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.marcha_branch",
-            "certificate_hash": "2585f9f543f83cdf584b162f62dca6f753cb3bfc"
-          }
-        },
-        {
-          "client_id": "1054254460241-kkkffdj9u0q41m99v0apj6d6rp211je5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.marcha_branch",
-            "certificate_hash": "fe488d99a888e2256eed8d8dc394e05dc869291b"
-          }
-        },
-        {
-          "client_id": "1054254460241-tgg8ju1m60n6tv3s63suak59mrat39cd.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.marcha_branch",
-            "certificate_hash": "7ecdc4138165da7a6c36e519fb23c19836116905"
-          }
-        },
-        {
-          "client_id": "1054254460241-vpojdstj4ktkdnn7uqm69l0mj4o4pqi4.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.marcha_branch",
-            "certificate_hash": "5fca58e56f294d8da3383da6445352f896ed4989"
           }
         },
         {

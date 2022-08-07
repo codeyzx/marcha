@@ -30,14 +30,14 @@ class RemindSuccessPage extends StatelessWidget {
               ),
               Center(
                   child: Text(
-                    "Ting!",
-                    style: successTitle,
-                  )),
+                "Ting!",
+                style: successTitle,
+              )),
               Center(
                   child: Text(
-                    "Success to give reminder!",
-                    style: subTitleSuccess,
-                  )),
+                "Success to give reminder!",
+                style: subTitleSuccess,
+              )),
               SizedBox(
                 height: 44.h,
               ),
@@ -54,8 +54,7 @@ class RemindSuccessPage extends StatelessWidget {
                     height: 55.h,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
-                                  context, '/nav-bar');
+                        Navigator.pushReplacementNamed(context, '/nav-bar');
                         // Navigator.pushReplacement(
                         //     context,
                         //     MaterialPageRoute(

@@ -492,7 +492,8 @@ class _RequestDetailState extends State<RequestDetail> {
                                             'userTargetID': _userTargetID,
                                             'userTargetName': _userTargetName,
                                             'userTargetEmail': _userTargetEmail,
-                                            'userTargetDeviceToken': _userTargetDeviceToken,
+                                            'userTargetDeviceToken':
+                                                _userTargetDeviceToken,
                                             'userTargetPhoto': _userTargetPhoto,
                                             'startTime': DateTime.now(),
                                             'endTime': dateTime,

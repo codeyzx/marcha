@@ -66,17 +66,16 @@ class _NotificationPageState extends State<NotificationPage> {
                   SizedBox(
                     height: 18.h,
                   ),
-                  Text(
-                    'Baru',
-                    style: labelNotification,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      box.clear();
-                    },
-                    child: Text(
-                      'Hapus Notifikasi',
-                      style: labelNotification,
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: TextButton(
+                      onPressed: () {
+                        box.clear();
+                      },
+                      child: Text(
+                        'Hapus Notifikasi',
+                        style: labelNotification,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -88,7 +87,6 @@ class _NotificationPageState extends State<NotificationPage> {
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: _items.length,
                           itemBuilder: (BuildContext context, int index) {
-                            // print('ini items: ${_items[index]}');
                             final currentItem = _items[index];
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

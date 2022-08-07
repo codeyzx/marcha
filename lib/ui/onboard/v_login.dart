@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +12,8 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:marcha_branch/ui/onboard/v_signup.dart';
+import 'package:uni_links/uni_links.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,6 +23,105 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  StreamSubscription? _sub;
+  final Dio _dio = Dio();
+
+  @override
+  void initState() {
+    _handleIncomingLinks();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _sub?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _handleIncomingLinks() async {
+    if (!kIsWeb) {
+      _sub = linkStream.listen((String? link) async {
+        if (!mounted) return;
+        if (link != null) {
+          final uriValue = Uri.parse(link);
+
+          if (uriValue.queryParameters['code'] != null) {
+            final response = await convertingCode(
+                uriValue.queryParameters['code'].toString());
+
+            if (response.statusCode == 200) {
+              final String accessToken = response.data['access_token'];
+              final responseToken = await getUserData(accessToken);
+
+              if (responseToken.statusCode == 200) {
+                CollectionReference userReference =
+                    FirebaseFirestore.instance.collection('users');
+
+                await context.read<AuthCubit>().uidLogin(responseToken);
+
+                final checkUser = await userReference
+                    .doc(responseToken.data['data']['user_id'].toString())
+                    .get();
+
+                if (checkUser.exists) {
+                  Navigator.pushReplacementNamed(context, '/nav-bar');
+                }
+              } else {
+                print(responseToken.data);
+              }
+            } else {
+              print(response.data);
+            }
+          }
+        }
+      }, onError: (Object err) {
+        if (!mounted) return;
+        print('got err: $err');
+      });
+    }
+  }
+
+  Future<Response> convertingCode(String code) async {
+    try {
+      final response = await _dio.post(
+        'https://api-v2.u.id/api/oauth/token',
+        data: {
+          "grant_type": "authorization_code",
+          "client_id": 212,
+          "client_secret": "cB33S2H610qt5q7YF9MCRkOu12wJ4yQkEv675Mo7",
+          "redirect_uri":
+              "https://marcha-api-production.up.railway.app/start-app",
+          "code": code,
+        },
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+      return response;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  Future<Response> getUserData(String accessToken) async {
+    try {
+      final response = await _dio.get(
+        'https://api-v2.u.id/api/v2/user_info',
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $accessToken',
+          },
+        ),
+      );
+      return response;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -27,6 +133,17 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _launchInWebViewOrVC(Uri url) async {
+      if (!await launchUrl(
+        url,
+        mode: LaunchMode.externalApplication,
+        webViewConfiguration: const WebViewConfiguration(
+            headers: <String, String>{'Content-Type': 'application/json'}),
+      )) {
+        throw 'Could not launch $url';
+      }
+    }
+
     String? emailValidator(value) {
       var pattern =
           r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -196,8 +313,8 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: () async {
                       try {
                         await context.read<AuthCubit>().googleLogin();
-                        final GoogleSignIn _googleSignIn = GoogleSignIn();
-                        final isSignIn = await _googleSignIn.isSignedIn();
+                        final GoogleSignIn googleSignIn = GoogleSignIn();
+                        final isSignIn = await googleSignIn.isSignedIn();
                         if (isSignIn) {
                           print('MASUK IS SIGN IN');
                           // Navigator.pushReplacement(
@@ -280,6 +397,43 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _launchInWebViewOrVC(
+                        Uri.parse(
+                            'https://u.id/oauth/authorize?client_id=212&redirect_uri=https://marcha-api-production.up.railway.app/start-app&response_type=code'),
+                      );
+                    },
+                    child: Container(
+                      width: 320.w,
+                      height: 42.h,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 7.h, horizontal: 20.w),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: HexColor('#9D9D9D'),
+                        ),
+                        borderRadius: BorderRadius.circular(5.r),
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset('assets/images/uid_logo.png',
+                              width: 30.w),
+                          SizedBox(
+                            width: 12.w,
+                          ),
+                          Text(
+                            'Hubungkan dengan UID',
+                            style: normalTxt,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

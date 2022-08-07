@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,7 +36,7 @@ class _ChatRoomState extends State<ChatRoom> {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _note = TextEditingController();
+    final TextEditingController note = TextEditingController();
     final String date = DateTime.now().toIso8601String();
     int totalUnread;
     CollectionReference chats = FirebaseFirestore.instance.collection('chats');
@@ -94,14 +93,14 @@ class _ChatRoomState extends State<ChatRoom> {
                           SizedBox(height: 41),
                           Center(
                             child: Container(
+                              padding: EdgeInsets.all(30),
                               child: TextFormField(
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
                                     labelText: 'Note *',
                                     hintText: 'Tambahkan Pesan'),
-                                controller: _note,
+                                controller: note,
                               ),
-                              padding: EdgeInsets.all(30),
                             ),
                           ),
                           Align(
@@ -116,7 +115,7 @@ class _ChatRoomState extends State<ChatRoom> {
                                       .collection('chat')
                                       .add({
                                     'isRead': false,
-                                    'msg': _note.text,
+                                    'msg': note.text,
                                     'penerima': _penerima,
                                     'pengirim': _pengirim,
                                     'time': date,
@@ -143,7 +142,7 @@ class _ChatRoomState extends State<ChatRoom> {
                                         .where('isRead', isEqualTo: false)
                                         .where('pengirim', isEqualTo: _pengirim)
                                         .get();
-                                        
+
                                     totalUnread = checkTotalUnread.docs.length;
 
                                     await users
@@ -154,7 +153,6 @@ class _ChatRoomState extends State<ChatRoom> {
                                       'lastTime': date,
                                       'total_unread': totalUnread,
                                     });
-                                    
                                   } else {
                                     await users
                                         .doc(_penerimaID)
@@ -162,9 +160,9 @@ class _ChatRoomState extends State<ChatRoom> {
                                         .doc(_chatID)
                                         .set({
                                       'connection': [
-                                    _pengirim,
-                                    _penerima,
-                                  ],
+                                        _pengirim,
+                                        _penerima,
+                                      ],
                                       'lastTime': date,
                                       'total_unread': 1,
                                     });
