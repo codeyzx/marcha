@@ -407,13 +407,13 @@ TextStyle rejectPayment = GoogleFonts.poppins(
   fontSize: 14.sp,
 );
 
-TextStyle NamePayment = GoogleFonts.poppins(
+TextStyle namePayment = GoogleFonts.poppins(
   color: Colors.black,
   fontWeight: FontWeight.w500,
   fontSize: 14.sp,
 );
 
-TextStyle AcceptPayment = GoogleFonts.poppins(
+TextStyle acceptPayment = GoogleFonts.poppins(
   color: HexColor('#229A35'),
   fontWeight: FontWeight.w500,
   fontSize: 14.sp,

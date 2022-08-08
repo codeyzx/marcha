@@ -5,8 +5,8 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:marcha_branch/cubit/auth_cubit.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:marcha_branch/ui/else/development_page.dart';
 import 'package:marcha_branch/ui/pin/otp_update.dart';
+import 'package:marcha_branch/ui/profile/development_page.dart';
 import 'package:marcha_branch/ui/profile/profile_edit_page.dart';
 
 class ProfilePage extends StatelessWidget {

@@ -7,7 +7,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:marcha_branch/api/api_base_helper.dart';
 import 'package:marcha_branch/shared/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:midtrans_sdk/midtrans_sdk.dart';
@@ -36,7 +35,6 @@ class _TopUpPageState extends State<TopUpPage> {
 
   final _formKey = GlobalKey<FormState>();
 
-  ApiBaseHelper api = ApiBaseHelper();
   final Dio _dio = Dio();
   MidtransSDK? _midtrans;
 

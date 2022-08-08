@@ -41,7 +41,6 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _handleIncomingLinks() async {
     if (!kIsWeb) {
       _sub = linkStream.listen((String? link) async {
-        if (!mounted) return;
         if (link != null) {
           final uriValue = Uri.parse(link);
 
@@ -75,7 +74,6 @@ class _LoginPageState extends State<LoginPage> {
           }
         }
       }, onError: (Object err) {
-        if (!mounted) return;
         print('got err: $err');
       });
     }

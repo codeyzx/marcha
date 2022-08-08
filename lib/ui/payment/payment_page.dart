@@ -278,7 +278,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                         ),
                                                                                                                         Text(
                                                                                                                           "${e2['userReqName']} ?",
-                                                                                                                          style: NamePayment,
+                                                                                                                          style: namePayment,
                                                                                                                         ),
                                                                                                                       ],
                                                                                                                     ),
@@ -296,14 +296,14 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                     Text(
                                                                                                                       e2['note'] == '' ? 'Tidak ada catatan' : e2['note'],
                                                                                                                       // 'Makan Padang',
-                                                                                                                      style: NamePayment,
+                                                                                                                      style: namePayment,
                                                                                                                     ),
                                                                                                                     SizedBox(
                                                                                                                       height: 10.h,
                                                                                                                     ),
                                                                                                                     Text(
                                                                                                                       'Reason',
-                                                                                                                      style: NamePayment,
+                                                                                                                      style: namePayment,
                                                                                                                     ),
                                                                                                                     SizedBox(
                                                                                                                       height: 10.h,
@@ -446,7 +446,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                       children: [
                                                                                                                         Text(
                                                                                                                           "Accept ",
-                                                                                                                          style: AcceptPayment,
+                                                                                                                          style: acceptPayment,
                                                                                                                         ),
                                                                                                                         Text(
                                                                                                                           "request from ",
@@ -455,7 +455,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                         Text(
                                                                                                                           "${e2['userReqName']} ?",
                                                                                                                           // "Samuel ?",
-                                                                                                                          style: NamePayment,
+                                                                                                                          style: namePayment,
                                                                                                                         ),
                                                                                                                       ],
                                                                                                                     ),
@@ -473,7 +473,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                     Text(
                                                                                                                       // 'Makan Padang',
                                                                                                                       e2['note'] == '' ? 'Tidak ada catatan' : e2['note'],
-                                                                                                                      style: NamePayment,
+                                                                                                                      style: namePayment,
                                                                                                                     ),
                                                                                                                   ],
                                                                                                                 ),
@@ -808,7 +808,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                           ),
                                                                                                           Text(
                                                                                                             "${e2['userReqName']} ?",
-                                                                                                            style: NamePayment,
+                                                                                                            style: namePayment,
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
@@ -826,14 +826,14 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                       Text(
                                                                                                         e2['note'] == '' ? 'Tidak ada catatan' : e2['note'],
                                                                                                         // 'Makan Padang',
-                                                                                                        style: NamePayment,
+                                                                                                        style: namePayment,
                                                                                                       ),
                                                                                                       SizedBox(
                                                                                                         height: 10.h,
                                                                                                       ),
                                                                                                       Text(
                                                                                                         'Reason',
-                                                                                                        style: NamePayment,
+                                                                                                        style: namePayment,
                                                                                                       ),
                                                                                                       SizedBox(
                                                                                                         height: 10.h,
@@ -993,7 +993,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                         children: [
                                                                                                           Text(
                                                                                                             "Accept ",
-                                                                                                            style: AcceptPayment,
+                                                                                                            style: acceptPayment,
                                                                                                           ),
                                                                                                           Text(
                                                                                                             "request from ",
@@ -1002,7 +1002,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                           Text(
                                                                                                             "${e2['userReqName']} ?",
                                                                                                             // "Samuel ?",
-                                                                                                            style: NamePayment,
+                                                                                                            style: namePayment,
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
@@ -1020,7 +1020,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                       Text(
                                                                                                         // 'Makan Padang',
                                                                                                         e2['note'] == '' ? 'Tidak ada catatan' : e2['note'],
-                                                                                                        style: NamePayment,
+                                                                                                        style: namePayment,
                                                                                                       ),
                                                                                                     ],
                                                                                                   ),
@@ -1351,7 +1351,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                         ),
                                                                                                                         Text(
                                                                                                                           "${e3['userTargetName']} ?",
-                                                                                                                          style: NamePayment,
+                                                                                                                          style: namePayment,
                                                                                                                         ),
                                                                                                                       ],
                                                                                                                     ),
@@ -1367,7 +1367,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                     ),
                                                                                                                     Text(
                                                                                                                       "Note : ${e2['note']}",
-                                                                                                                      style: NamePayment,
+                                                                                                                      style: namePayment,
                                                                                                                     ),
                                                                                                                   ],
                                                                                                                 ),
@@ -1488,7 +1488,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                         ),
                                                                                                                         Text(
                                                                                                                           "${e3['userTargetName']} ?",
-                                                                                                                          style: NamePayment,
+                                                                                                                          style: namePayment,
                                                                                                                         ),
                                                                                                                       ],
                                                                                                                     ),
@@ -1504,7 +1504,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                                     ),
                                                                                                                     Text(
                                                                                                                       e2['note'],
-                                                                                                                      style: NamePayment,
+                                                                                                                      style: namePayment,
                                                                                                                     ),
                                                                                                                   ],
                                                                                                                 ),
@@ -1836,7 +1836,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                           ),
                                                                                                           Text(
                                                                                                             "${e2['userTargetName']} ?",
-                                                                                                            style: NamePayment,
+                                                                                                            style: namePayment,
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
@@ -1852,7 +1852,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                       ),
                                                                                                       Text(
                                                                                                         "Note : ${e2['note']}",
-                                                                                                        style: NamePayment,
+                                                                                                        style: namePayment,
                                                                                                       ),
                                                                                                     ],
                                                                                                   ),
@@ -1986,7 +1986,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                           ),
                                                                                                           Text(
                                                                                                             "${e2['userReqName']} ?",
-                                                                                                            style: NamePayment,
+                                                                                                            style: namePayment,
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
@@ -2002,7 +2002,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                                                                                       ),
                                                                                                       Text(
                                                                                                         e2['note'],
-                                                                                                        style: NamePayment,
+                                                                                                        style: namePayment,
                                                                                                       ),
                                                                                                     ],
                                                                                                   ),
@@ -2522,7 +2522,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //                                 ),
   //                                 Text(
   //                                   "Samuel ?",
-  //                                   style: NamePayment,
+  //                                   style: namePayment,
   //                                 ),
   //                               ],
   //                             ),
@@ -2538,14 +2538,14 @@ class _PaymentPageState extends State<PaymentPage> {
   //                             ),
   //                             Text(
   //                               'Makan Padang',
-  //                               style: NamePayment,
+  //                               style: namePayment,
   //                             ),
   //                             SizedBox(
   //                               height: 10.h,
   //                             ),
   //                             Text(
   //                               'Reason',
-  //                               style: NamePayment,
+  //                               style: namePayment,
   //                             ),
   //                             SizedBox(
   //                               height: 10.h,
@@ -2654,7 +2654,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //                               children: [
   //                                 Text(
   //                                   "Accept ",
-  //                                   style: AcceptPayment,
+  //                                   style: acceptPayment,
   //                                 ),
   //                                 Text(
   //                                   "request from ",
@@ -2662,7 +2662,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //                                 ),
   //                                 Text(
   //                                   "Samuel ?",
-  //                                   style: NamePayment,
+  //                                   style: namePayment,
   //                                 ),
   //                               ],
   //                             ),
@@ -2678,7 +2678,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //                             ),
   //                             Text(
   //                               'Makan Padang',
-  //                               style: NamePayment,
+  //                               style: namePayment,
   //                             ),
   //                           ],
   //                         ),
@@ -2778,7 +2778,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //                                 ),
   //                                 Text(
   //                                   "Samuel ?",
-  //                                   style: NamePayment,
+  //                                   style: namePayment,
   //                                 ),
   //                               ],
   //                             ),
@@ -2794,7 +2794,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //                             ),
   //                             Text(
   //                               'Makan Padang',
-  //                               style: NamePayment,
+  //                               style: namePayment,
   //                             ),
   //                           ],
   //                         ),
@@ -2883,7 +2883,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //                                 ),
   //                                 Text(
   //                                   "Samuel ?",
-  //                                   style: NamePayment,
+  //                                   style: namePayment,
   //                                 ),
   //                               ],
   //                             ),
@@ -2899,7 +2899,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //                             ),
   //                             Text(
   //                               'Makan Padang',
-  //                               style: NamePayment,
+  //                               style: namePayment,
   //                             ),
   //                           ],
   //                         ),
