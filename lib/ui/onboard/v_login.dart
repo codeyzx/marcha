@@ -87,8 +87,7 @@ class _LoginPageState extends State<LoginPage> {
           "grant_type": "authorization_code",
           "client_id": 212,
           "client_secret": "cB33S2H610qt5q7YF9MCRkOu12wJ4yQkEv675Mo7",
-          "redirect_uri":
-              "https://marcha-api-production.up.railway.app/start-app",
+          "redirect_uri": "https://marcha-backend.herokuapp.com/start-app",
           "code": code,
         },
         options: Options(
@@ -402,7 +401,7 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: () {
                       _launchInWebViewOrVC(
                         Uri.parse(
-                            'https://u.id/oauth/authorize?client_id=212&redirect_uri=https://marcha-api-production.up.railway.app/start-app&response_type=code'),
+                            'https://u.id/oauth/authorize?client_id=212&redirect_uri=https://marcha-backend.herokuapp.com/start-app&response_type=code'),
                       );
                     },
                     child: Container(

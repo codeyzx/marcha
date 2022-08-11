@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                                               sigmaX: 4, sigmaY: 4),
                                           child: Container(
                                             width: 1.sw,
-                                            height: 240.h,
+                                            height: 260.h,
                                             decoration: BoxDecoration(
                                               color: buttonMain,
                                               borderRadius: BorderRadius.only(

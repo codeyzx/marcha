@@ -226,6 +226,52 @@ TextStyle textButtonSuccess = GoogleFonts.poppins(
   fontSize: 16.sp,
 );
 
+TextStyle statusTopUpSettlement = GoogleFonts.poppins(
+  color: HexColor('#229A35'),
+  fontWeight: FontWeight.w500,
+  fontSize: 16.sp,
+);
+TextStyle statusTopUpPending = GoogleFonts.poppins(
+  color: HexColor('#000000').withOpacity(0.6),
+  fontWeight: FontWeight.w500,
+  fontSize: 16.sp,
+);
+TextStyle statusTopUpFailed = GoogleFonts.poppins(
+  color: HexColor('#DB3F3F'),
+  fontWeight: FontWeight.w500,
+  fontSize: 16.sp,
+);
+
+String topUpName(String name) {
+  switch (name) {
+    case 'settlement':
+      return 'Berhasil';
+    case 'pending':
+      return 'Menunggu';
+    case 'expire':
+      return 'Gagal';
+    case 'failed':
+      return 'Gagal';
+    default:
+      return name;
+  }
+}
+
+TextStyle statusTopUp(String status) {
+  switch (status) {
+    case 'settlement':
+      return statusTopUpSettlement;
+    case 'pending': 
+      return statusTopUpPending;
+    case 'expire':
+      return statusTopUpFailed;
+    case 'failed':
+      return statusTopUpFailed;
+    default:
+      return statusTopUpPending;
+  }
+}
+
 //friends
 TextStyle subTitleFriend = GoogleFonts.poppins(
   color: Colors.black,

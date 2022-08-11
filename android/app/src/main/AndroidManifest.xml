@@ -22,7 +22,7 @@
                 <data
                 android:scheme="https"
                 android:pathPrefix="/start-app"
-                android:host="marcha-api-production.up.railway.app" />
+                android:host="marcha-backend.herokuapp.com" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
