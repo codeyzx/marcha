@@ -3,7 +3,8 @@
 
 ## Try It Now ! ##
 [Marcha App](https://drive.google.com/drive/folders/1e259GheZt2TWYYZxpuW9oZ-vfTYwBiEe)
-[Marcha App](https://marchaa.vercel.app/)
+
+[Marcha Website](https://marchaa.vercel.app/)
 
 ## Usage
 
